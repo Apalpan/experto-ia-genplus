@@ -11,6 +11,7 @@
 - [x] Expandir documentación x5 con briefing ejecutivo, playbook, herramientas y referencias Platzi/Freddy.
 - [x] Agregar ampliación x2 con vista Madurez IA y documentos de madurez, arquitectura agentic, razonamiento TTC/GRPO, aprendizaje AECODE y prompts AEC.
 - [x] Agregar ampliación IA AEC con reportes GEN+/AECODE, vista IA AEC, ROI, cuñas producto, stack agentic, prompts y glosario.
+- [x] Rediseñar inicio como AI Expert con diagnostico, filtros por perfil/nivel, score y framework 01-05.
 - [x] Documentar estándar del repo.
 
 ## Próximo sprint

@@ -1,6 +1,8 @@
-# GEN+ AI Expert Trainer
+# AI Expert
 
-Entrenador experto de inteligencia artificial para Alejandro Palpan y GEN+. El objetivo no es tener otra landing de IA, sino un sistema de aprendizaje vivo: base documental, módulos de dominio, preguntas de conexión, playbooks operativos y una interfaz dark/light estilo GEN+.
+Todo el potencial de la IA, de forma clara.
+
+Entrenador experto de inteligencia artificial para Alejandro Palpan y GEN+. El objetivo no es tener otra landing de IA, sino una herramienta real para aprender, diagnosticar, priorizar, implementar y escalar IA en empresas, proyectos y startups.
 
 by Alejandro Palpan
 
@@ -24,7 +26,8 @@ Este repo organiza la base inicial para que puedas:
 - Diseño responsive con modo dark/light.
 - Tipografía Plus Jakarta Sans, cercana al criterio Ruberoid/GEN+.
 - Microanimaciones sobrias para navegación, tarjetas y hero técnico.
-- Dashboard ejecutivo del entrenador.
+- Dashboard AI Expert con diagnóstico, score de madurez, filtros por perfil/nivel y framework 01-05.
+- CTAs operativos: Iniciar diagnóstico, Ver roadmap, Explorar casos y Generar plan.
 - 14 módulos de dominio IA.
 - 44 preguntas socráticas de conexión.
 - 40 conceptos expertos en IA, desarrollo web, datos, RAG, seguridad y agentes.
@@ -65,6 +68,7 @@ npm run build:pages
 ```text
 src/
   App.tsx                 Interfaz principal y vistas
+  data/aiExpert.ts        Framework AI Expert, diagnostico, perfiles, niveles y preguntas clave
   data/knowledge.ts       Base curada del entrenador
   components/             UI reutilizable
   lib/trainer.ts          Helpers de preguntas y búsqueda

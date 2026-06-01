@@ -21,6 +21,14 @@ src/data/knowledge.ts
   playbooks
   externalReferences
 
+src/data/aiExpert.ts
+  aiExpertMetrics
+  aiExpertStages
+  aiExpertProfiles
+  aiExpertLevels
+  diagnosticDimensions
+  diagnosticQuestions
+
 src/data/advancedKnowledge.ts
   expertConcepts
   expertLabs
@@ -92,6 +100,42 @@ Representa una guía operativa. Incluye:
 - pasos;
 - prompt base;
 - riesgo oculto.
+
+### AIExpertStage
+
+Representa una fase del framework principal. Incluye:
+
+- paso 01-05;
+- titulo y subtitulo;
+- explicacion simple;
+- lectura tecnica;
+- lectura ejecutiva;
+- acciones;
+- salidas esperadas;
+- riesgo oculto;
+- CTA y vista destino.
+
+### AIExpertProfile
+
+Representa una ruta de adopcion por contexto. Incluye:
+
+- empresa, proyecto o startup;
+- foco de adopcion;
+- promesa;
+- prioridad;
+- casos de uso;
+- riesgos;
+- siguiente accion recomendada.
+
+### DiagnosticDimension
+
+Representa una dimension del score de madurez. Incluye:
+
+- etiqueta;
+- score actual;
+- objetivo;
+- brecha;
+- proxima accion.
 
 ### ExpertConcept
 

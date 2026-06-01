@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   BarChart3,
-  BookOpen,
+  Building2,
   BriefcaseBusiness,
   BrainCircuit,
   CheckCircle2,
@@ -17,6 +17,7 @@ import {
   LibraryBig,
   MessageSquareText,
   Network,
+  Rocket,
   Search,
   ShieldCheck,
   Target,
@@ -26,7 +27,6 @@ import { MetricCard } from "./components/MetricCard";
 import { SectionTitle } from "./components/SectionTitle";
 import { ThemeToggle } from "./components/ThemeToggle";
 import {
-  dashboardMetrics,
   externalReferences,
   knowledgeModules,
   learningPaths,
@@ -61,11 +61,21 @@ import {
   aecStackLayers,
   agenticPatterns,
 } from "./data/aecResearch";
+import {
+  aiExpertLevels,
+  aiExpertMetrics,
+  aiExpertProfiles,
+  aiExpertStages,
+  diagnosticDimensions,
+  diagnosticQuestions,
+  type AiExpertLevelId,
+  type AiExpertProfileId,
+} from "./data/aiExpert";
 
 type View = "dashboard" | "trainer" | "concepts" | "data" | "maturity" | "aec" | "library" | "playbooks" | "roadmap";
 
 const navItems = [
-  { id: "dashboard", label: "Command", icon: LayoutDashboard },
+  { id: "dashboard", label: "AI Expert", icon: LayoutDashboard },
   { id: "trainer", label: "Entrenador", icon: MessageSquareText },
   { id: "concepts", label: "Conceptos", icon: BrainCircuit },
   { id: "data", label: "Datos clave", icon: BarChart3 },
@@ -101,8 +111,8 @@ export default function App() {
         <div className="brand-block">
           <div className="brand-mark">G+</div>
           <div>
-            <span>GEN+ AI</span>
-            <strong>Expert Trainer</strong>
+            <span>AI Expert</span>
+            <strong>GEN+ AI Trainer</strong>
             <em>by Alejandro Palpan</em>
           </div>
         </div>
@@ -126,22 +136,22 @@ export default function App() {
 
         <div className="sidebar-footer">
           <span>North Star</span>
-          <strong>Comprensión aplicable de IA</strong>
-          <p>Preguntas profundas + evidencia + casos GEN+.</p>
+          <strong>Dominio aplicable de IA</strong>
+          <p>Diagnostico + criterio + implementacion + ROI.</p>
         </div>
       </aside>
 
       <main className="workspace">
         <header className="topbar">
           <div>
-            <span className="eyebrow">Base viva · 2026-06-01</span>
-            <h1>Entrenador experto de inteligencia artificial</h1>
-            <span className="signature-pill">by Alejandro Palpan</span>
+            <span className="eyebrow">Base viva · AI Expert · 2026-06-01</span>
+            <h1>AI Expert</h1>
+            <span className="signature-pill">Todo el potencial de la IA, de forma clara.</span>
           </div>
           <div className="topbar-actions">
-            <button className="ghost-button" type="button" onClick={() => activateView("trainer")}>
-              <MessageSquareText size={17} />
-              Practicar
+            <button className="ghost-button" type="button" onClick={() => activateView("maturity")}>
+              <CircleGauge size={17} />
+              Diagnostico
             </button>
             <ThemeToggle
               theme={theme}
@@ -150,7 +160,9 @@ export default function App() {
           </div>
         </header>
 
-        {activeView === "dashboard" && <DashboardView onOpenTrainer={() => activateView("trainer")} />}
+        {activeView === "dashboard" && (
+          <DashboardView onOpenTrainer={() => activateView("trainer")} onOpenView={activateView} />
+        )}
         {activeView === "trainer" && <TrainerView />}
         {activeView === "concepts" && <ConceptsView />}
         {activeView === "data" && <KeyDataView />}
@@ -164,52 +176,265 @@ export default function App() {
   );
 }
 
-function DashboardView({ onOpenTrainer }: { onOpenTrainer: () => void }) {
+function DashboardView({
+  onOpenTrainer,
+  onOpenView,
+}: {
+  onOpenTrainer: () => void;
+  onOpenView: (view: View) => void;
+}) {
+  const [profileId, setProfileId] = useState<AiExpertProfileId>("empresa");
+  const [levelId, setLevelId] = useState<AiExpertLevelId>("intermedio");
+
+  const selectedProfile = aiExpertProfiles.find((profile) => profile.id === profileId) ?? aiExpertProfiles[0];
+  const selectedLevel = aiExpertLevels.find((levelItem) => levelItem.id === levelId) ?? aiExpertLevels[1];
+  const diagnosticScore = useMemo(() => {
+    const score = diagnosticDimensions.reduce((total, dimension) => total + dimension.score / dimension.target, 0);
+    return Math.round((score / diagnosticDimensions.length) * 100);
+  }, []);
+  const profileIcons = {
+    empresa: Building2,
+    proyecto: ClipboardList,
+    startup: Rocket,
+  } satisfies Record<AiExpertProfileId, typeof Building2>;
+  const ActiveProfileIcon = profileIcons[selectedProfile.id];
+
+  const scrollToDiagnostic = () => {
+    document.getElementById("diagnostico-ai-expert")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <div className="view-stack">
-      <section className="hero-panel">
-        <div className="hero-copy">
-          <span className="eyebrow">GEN+ AI · by Alejandro Palpan</span>
-          <h2>Domina IA como sistema: modelos, datos, agentes, automatización, producto y gobierno.</h2>
+      <section className="hero-panel ai-expert-hero">
+        <div className="hero-copy ai-expert-copy">
+          <span className="eyebrow">AI Expert · by Alejandro Palpan</span>
+          <h2>Todo el potencial de la IA, de forma clara.</h2>
           <p>
-            Este repo convierte tus documentos iniciales en una experiencia de entrenamiento: conceptos explicados
-            con analogías, lectura técnica, criterio ejecutivo, preguntas socráticas, playbooks aplicables y una base
-            lista para seguir creciendo.
+            Una base viva para aprender, diagnosticar, priorizar, implementar y escalar inteligencia artificial en
+            empresas, proyectos y startups. Combina criterio ejecutivo, explicaciones simples, lectura tecnica,
+            analogias, agentes, RAG, automatizacion, gobierno, ROI y casos aplicables.
           </p>
           <div className="hero-actions">
-            <button className="primary-button" type="button" onClick={onOpenTrainer}>
-              Empezar sesión <ArrowRight size={18} />
+            <button className="primary-button" type="button" onClick={scrollToDiagnostic}>
+              Iniciar diagnostico <CircleGauge size={18} />
             </button>
-            <a className="secondary-button" href="#fuentes">
-              Ver fuentes <BookOpen size={18} />
-            </a>
+            <button className="secondary-button" type="button" onClick={() => onOpenView("roadmap")}>
+              Ver roadmap <ArrowRight size={18} />
+            </button>
+            <button className="secondary-button" type="button" onClick={() => onOpenView("aec")}>
+              Explorar casos <Eye size={18} />
+            </button>
+            <button className="secondary-button" type="button" onClick={() => onOpenView("playbooks")}>
+              Generar plan <Wrench size={18} />
+            </button>
           </div>
         </div>
-        <div className="hero-proof">
+
+        <div className="ai-expert-proof">
           <div className="proof-header">
             <Target size={20} />
-            <span>Loop de aprendizaje</span>
+            <span>Framework de implementacion GEN+</span>
           </div>
-          <ol>
-            <li>Entiende el concepto en lenguaje simple.</li>
-            <li>Conecta la analogía con arquitectura avanzada.</li>
-            <li>Responde una pregunta crítica y ejecutiva.</li>
-            <li>Aplica el concepto a GEN+ o AEC.</li>
-          </ol>
+          <div className="journey-map" aria-label="Framework AI Expert">
+            {aiExpertStages.map((stage) => (
+              <button
+                className="journey-step"
+                type="button"
+                key={stage.step}
+                onClick={() => (stage.view === "trainer" ? onOpenTrainer() : onOpenView(stage.view))}
+              >
+                <strong>{stage.step}</strong>
+                <span>{stage.title}</span>
+                <small>{stage.subtitle}</small>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="metrics-grid">
-        {dashboardMetrics.map((metric) => (
+        {aiExpertMetrics.map((metric) => (
           <MetricCard key={metric.label} {...metric} />
         ))}
       </section>
 
+      <section id="diagnostico-ai-expert" className="ai-expert-section">
+        <SectionTitle
+          eyebrow="Diagnostico"
+          title="Panel de madurez IA para decidir que hacer primero"
+          summary="Filtra por contexto y nivel para traducir la base de conocimiento en una accion concreta."
+        />
+
+        <div className="ai-expert-controls">
+          <div>
+            <span>Perfil</span>
+            <div className="segmented-row" role="group" aria-label="Filtrar por perfil">
+              {aiExpertProfiles.map((profile) => (
+                <button
+                  className={profile.id === profileId ? "segment active" : "segment"}
+                  type="button"
+                  key={profile.id}
+                  onClick={() => setProfileId(profile.id)}
+                >
+                  {profile.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <span>Nivel</span>
+            <div className="segmented-row" role="group" aria-label="Filtrar por nivel">
+              {aiExpertLevels.map((levelItem) => (
+                <button
+                  className={levelItem.id === levelId ? "segment active" : "segment"}
+                  type="button"
+                  key={levelItem.id}
+                  onClick={() => setLevelId(levelItem.id)}
+                >
+                  {levelItem.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="diagnostic-shell">
+          <article className="diagnostic-score-card">
+            <div className="score-ring" style={{ "--score": `${diagnosticScore}%` } as CSSProperties}>
+              <strong>{diagnosticScore}</strong>
+              <span>/100</span>
+            </div>
+            <div>
+              <span>Score estimado</span>
+              <h3>Madurez exploratoria con potencial alto</h3>
+              <p>
+                Para <strong>{selectedProfile.label}</strong> en nivel <strong>{selectedLevel.label}</strong>, el
+                siguiente salto no es aprender mas herramientas: es convertir casos de uso en flujos medibles con datos,
+                responsables y control humano.
+              </p>
+            </div>
+            <div className="diagnostic-next-action">
+              <ActiveProfileIcon size={18} />
+              <strong>{selectedProfile.recommendedAction}</strong>
+            </div>
+          </article>
+
+          <div className="diagnostic-bars">
+            {diagnosticDimensions.map((dimension) => {
+              const percentage = Math.round((dimension.score / dimension.target) * 100);
+              return (
+                <article className="diagnostic-bar-row" key={dimension.label}>
+                  <div className="bar-row-header">
+                    <span>{dimension.label}</span>
+                    <strong>
+                      {dimension.score.toFixed(1)} / {dimension.target}
+                    </strong>
+                  </div>
+                  <div className="bar-track" aria-label={`${dimension.label}: ${percentage}%`}>
+                    <div className="bar-fill" style={{ width: `${percentage}%` }} />
+                  </div>
+                  <p>{dimension.gap}</p>
+                  <small>{dimension.next}</small>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <section>
         <SectionTitle
-          eyebrow="Mapa de dominio"
-          title="14 módulos para pasar de usuario avanzado a arquitecto de IA"
-          summary="Cada módulo mezcla fundamento, aplicación GEN+, riesgo y evidencia de dominio."
+          eyebrow="Rutas"
+          title="Empresas, proyectos y startups no adoptan IA de la misma forma"
+          summary="La guia ajusta lenguaje, riesgos, casos y primera accion segun el contexto de decision."
+        />
+        <div className="profile-card-grid">
+          {aiExpertProfiles.map((profile) => {
+            const ProfileIcon = profileIcons[profile.id];
+            return (
+              <article className={profile.id === profileId ? "profile-card active" : "profile-card"} key={profile.id}>
+                <div className="profile-card-top">
+                  <ProfileIcon size={20} />
+                  <span>{profile.label}</span>
+                </div>
+                <h3>{profile.promise}</h3>
+                <p>{profile.focus}</p>
+                <div className="tag-row">
+                  {profile.cases.slice(0, 3).map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+                <button className="ghost-button" type="button" onClick={() => setProfileId(profile.id)}>
+                  Usar esta ruta <ArrowRight size={16} />
+                </button>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Framework visual"
+          title="01 Diagnostico · 02 Capacitacion · 03 Hoja de ruta · 04 Implementacion · 05 Escalamiento"
+          summary="Cada fase explica la idea de forma simple, tecnica y ejecutiva, con salidas reales y riesgo oculto."
+        />
+        <div className="framework-action-grid">
+          {aiExpertStages.map((stage) => (
+            <article className="framework-action-card" key={stage.step}>
+              <div className="action-card-top">
+                <strong>{stage.step}</strong>
+                <span>{stage.subtitle}</span>
+              </div>
+              <h3>{stage.title}</h3>
+              <p>{stage.simple}</p>
+              <details>
+                <summary>Lectura tecnica y ejecutiva</summary>
+                <p>{stage.technical}</p>
+                <p>{stage.executive}</p>
+              </details>
+              <div className="action-list">
+                {stage.actions.map((action) => (
+                  <span key={action}>
+                    <CheckCircle2 size={14} />
+                    {action}
+                  </span>
+                ))}
+              </div>
+              <small>{stage.risk}</small>
+              <button
+                className="secondary-button"
+                type="button"
+                onClick={() => (stage.view === "trainer" ? onOpenTrainer() : onOpenView(stage.view))}
+              >
+                {stage.cta} <ArrowRight size={16} />
+              </button>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Preguntas de conexion"
+          title="Preguntas que obligan a entender IA, no solo repetir terminologia"
+          summary="Usalas para diagnostico, workshops, capacitacion de equipos o validacion de proyectos."
+        />
+        <div className="diagnostic-question-grid">
+          {diagnosticQuestions.map((question, index) => (
+            <article className="diagnostic-question-card" key={question}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <p>{question}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Base de conocimiento"
+          title="14 modulos para pasar de usuario avanzado a arquitecto de IA"
+          summary="Cada modulo mezcla fundamento, aplicacion GEN+, riesgo y evidencia de dominio."
         />
         <div className="module-grid">
           {knowledgeModules.map((module) => {
@@ -232,7 +457,7 @@ function DashboardView({ onOpenTrainer }: { onOpenTrainer: () => void }) {
         <SectionTitle
           eyebrow="Fuentes"
           title="Base documental inicial"
-          summary="Las fuentes crudas quedaron dentro del repo y la app usa una síntesis curada para entrenamiento."
+          summary="Las fuentes crudas quedaron dentro del repo y la app usa una sintesis curada para entrenamiento."
         />
         <div className="source-grid">
           {sourceNotes.map((source) => (

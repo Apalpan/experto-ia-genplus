@@ -29,3 +29,9 @@ Razón: el repo debe conservar evidencia de origen y permitir reingesta futura.
 Decisión: incluir `AI Research Report.pdf` como fuente cruda, pero no usarlo como texto curado todavía.
 
 Razón: la extracción automática devolvió texto corrupto por codificación del PDF. Requiere OCR o versión textual para incorporarlo con confianza.
+
+## 2026-06-01 — AI Expert como primera pantalla
+
+Decisión: convertir el inicio en un panel operativo titulado `AI Expert`.
+
+Razón: Alejandro necesita una herramienta para aprender, diagnosticar, implementar y escalar IA, no una landing ni un índice documental. El dashboard ahora prioriza score, filtros por perfil/nivel, framework 01-05 y CTAs de accion.
