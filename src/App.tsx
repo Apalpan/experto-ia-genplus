@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
+  BarChart3,
   BookOpen,
+  BriefcaseBusiness,
   BrainCircuit,
   CheckCircle2,
   ClipboardList,
@@ -11,7 +13,9 @@ import {
   LibraryBig,
   MessageSquareText,
   Search,
+  ShieldCheck,
   Target,
+  Wrench,
 } from "lucide-react";
 import { MetricCard } from "./components/MetricCard";
 import { SectionTitle } from "./components/SectionTitle";
@@ -28,13 +32,22 @@ import {
 } from "./data/knowledge";
 import { findModuleTitle, getQuestionSet, normalizeSearch } from "./lib/trainer";
 import { conceptBridges, expertConcepts, expertLabs } from "./data/advancedKnowledge";
+import {
+  adoptionMetrics,
+  implementationRoadmap,
+  implementationSignals,
+  keyDataSources,
+  platziInsights,
+  toolLayers,
+} from "./data/keyData";
 
-type View = "dashboard" | "trainer" | "concepts" | "library" | "playbooks" | "roadmap";
+type View = "dashboard" | "trainer" | "concepts" | "data" | "library" | "playbooks" | "roadmap";
 
 const navItems = [
   { id: "dashboard", label: "Command", icon: LayoutDashboard },
   { id: "trainer", label: "Entrenador", icon: MessageSquareText },
   { id: "concepts", label: "Conceptos", icon: BrainCircuit },
+  { id: "data", label: "Datos clave", icon: BarChart3 },
   { id: "library", label: "Biblioteca", icon: LibraryBig },
   { id: "playbooks", label: "Playbooks", icon: ClipboardList },
   { id: "roadmap", label: "Roadmap", icon: Layers3 },
@@ -117,6 +130,7 @@ export default function App() {
         {activeView === "dashboard" && <DashboardView onOpenTrainer={() => activateView("trainer")} />}
         {activeView === "trainer" && <TrainerView />}
         {activeView === "concepts" && <ConceptsView />}
+        {activeView === "data" && <KeyDataView />}
         {activeView === "library" && <LibraryView />}
         {activeView === "playbooks" && <PlaybooksView />}
         {activeView === "roadmap" && <RoadmapView />}
@@ -518,6 +532,210 @@ function ConceptsView() {
                 <p>{lab.deliverable}</p>
               </div>
             </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function KeyDataView() {
+  const topMetrics = adoptionMetrics.slice(0, 4);
+
+  return (
+    <div className="view-stack">
+      <section className="hero-panel data-hero">
+        <div className="hero-copy">
+          <span className="eyebrow">Datos clave · adopción e implementación IA</span>
+          <h2>El mercado ya adoptó IA. La ventaja ahora está en implementarla con sistema.</h2>
+          <p>
+            Esta vista sintetiza reportes recientes, referencias de implementación y aprendizajes de Platzi/Freddy
+            Vega para convertir datos en decisiones: qué adoptar, cómo medir, qué herramientas usar y qué riesgos
+            controlar.
+          </p>
+        </div>
+        <div className="hero-proof data-proof">
+          <div className="proof-header">
+            <BarChart3 size={20} />
+            <span>Lectura ejecutiva</span>
+          </div>
+          <p>
+            IA ya no se gana por curiosidad ni por comprar licencias. Se gana con casos de uso, rediseño de flujos,
+            datos confiables, herramientas gobernadas, personas entrenadas y métricas de impacto.
+          </p>
+        </div>
+      </section>
+
+      <section className="data-metrics-grid">
+        {topMetrics.map((metric) => (
+          <article className="data-metric-card" key={metric.id}>
+            <span>{metric.source}</span>
+            <strong>{metric.value}</strong>
+            <h3>{metric.label}</h3>
+            <p>{metric.signal}</p>
+            <a href={metric.sourceUrl} target="_blank" rel="noreferrer">
+              Fuente <ExternalLink size={15} />
+            </a>
+          </article>
+        ))}
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Lectura de mercado"
+          title="12 datos que importan para decidir adopción IA"
+          summary="Cada dato está conectado a una implicancia para GEN+, AEC, producto, capacitación y automatización."
+        />
+        <div className="insight-table">
+          {adoptionMetrics.map((metric) => (
+            <article className="insight-row" key={metric.id}>
+              <div>
+                <span>{metric.source}</span>
+                <strong>{metric.value}</strong>
+              </div>
+              <div>
+                <h3>{metric.label}</h3>
+                <p>{metric.implication}</p>
+              </div>
+              <a href={metric.sourceUrl} target="_blank" rel="noreferrer" aria-label={`Abrir ${metric.source}`}>
+                <ExternalLink size={17} />
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Implementación"
+          title="Qué significan los datos cuando quieres construir"
+          summary="El patrón común de los reportes: la adopción sube, pero el impacto aparece solo cuando hay procesos, datos, gobierno y práctica."
+        />
+        <div className="signal-grid">
+          {implementationSignals.map((signal) => (
+            <article className="signal-card" key={signal.id}>
+              <div className="module-icon">
+                <BriefcaseBusiness size={20} />
+              </div>
+              <h3>{signal.title}</h3>
+              <div className="concept-layer">
+                <strong>Simple</strong>
+                <p>{signal.simple}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Técnico</strong>
+                <p>{signal.technical}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Ejecutivo</strong>
+                <p>{signal.executive}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Herramientas"
+          title="Mapa de herramientas IA por capa de implementación"
+          summary="No elijas herramientas por hype. Elige por rol en la arquitectura: modelo, workflow, RAG, agente, evaluación, seguridad o contenido."
+        />
+        <div className="tool-layer-grid">
+          {toolLayers.map((tool) => (
+            <article className="tool-layer-card" key={tool.id}>
+              <div className="tool-layer-top">
+                <div className="module-icon">
+                  <Wrench size={20} />
+                </div>
+                <span>{tool.layer}</span>
+              </div>
+              <div className="chip-list">
+                {tool.examples.map((example) => (
+                  <span key={example}>{example}</span>
+                ))}
+              </div>
+              <div className="concept-layer">
+                <strong>Cuándo usar</strong>
+                <p>{tool.useWhen}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Riesgo</strong>
+                <p>{tool.implementationRisk}</p>
+              </div>
+              <div className="evidence-block">
+                <strong>Regla de decisión</strong>
+                <p>{tool.decisionRule}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Freddy Vega / Platzi / referentes"
+          title="Aprendizajes para adopción AI-first en equipos reales"
+          summary="Se revisaron referencias públicas de Platzi, Freddy Vega y contenidos similares para extraer principios aplicables, no copiar discurso."
+        />
+        <div className="platzi-grid">
+          {platziInsights.map((insight) => (
+            <article className="platzi-card" key={insight.id}>
+              <span>{insight.source}</span>
+              <h3>{insight.title}</h3>
+              <p>{insight.observation}</p>
+              <div className="template-block">
+                <strong>Aplicación GEN+</strong>
+                <p>{insight.genplusTakeaway}</p>
+              </div>
+              <a href={insight.sourceUrl} target="_blank" rel="noreferrer">
+                Revisar fuente <ExternalLink size={15} />
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Roadmap ejecutivo"
+          title="Implementación IA en 120 días"
+          summary="Un camino práctico para pasar de uso individual a sistema con casos, datos, agentes, gobierno y mejora continua."
+        />
+        <div className="implementation-grid">
+          {implementationRoadmap.map((step) => (
+            <article className="implementation-card" key={step.id}>
+              <span>{step.phase}</span>
+              <h3>{step.title}</h3>
+              <p>{step.goal}</p>
+              <div className="evidence-block">
+                <strong>Evidencia</strong>
+                <p>{step.evidence}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Falla típica</strong>
+                <p>{step.failureMode}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Fuentes web revisadas"
+          title="Reportes, estudios y referencias públicas"
+          summary="La documentación ampliada conserva las fuentes para actualización periódica y auditoría."
+        />
+        <div className="reference-grid">
+          {keyDataSources.map((source) => (
+            <a className="reference-card" href={source.url} key={source.url} target="_blank" rel="noreferrer">
+              <div>
+                <strong>{source.label}</strong>
+                <ShieldCheck size={16} />
+              </div>
+              <p>{source.note}</p>
+            </a>
           ))}
         </div>
       </section>

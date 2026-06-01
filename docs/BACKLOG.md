@@ -7,6 +7,8 @@
 - [x] Crear app React con dark/light.
 - [x] Crear módulos, preguntas y playbooks.
 - [x] Agregar conceptos expertos y labs detallados.
+- [x] Agregar apartado Datos clave con adopción, implementación, herramientas y fuentes web.
+- [x] Expandir documentación x5 con briefing ejecutivo, playbook, herramientas y referencias Platzi/Freddy.
 - [x] Documentar estándar del repo.
 
 ## Próximo sprint
@@ -20,6 +22,8 @@
 - [ ] Agregar exportación de preguntas a Markdown.
 - [ ] Agregar progreso por concepto dominado.
 - [ ] Agregar rutas de estudio semanales con evidencia.
+- [ ] Convertir datos clave en modo quiz ejecutivo.
+- [ ] Crear filtros por fuente: Stanford, McKinsey, OpenAI, Microsoft, Stack Overflow, Platzi.
 
 ## MVP+ RAG
 

@@ -29,10 +29,12 @@ Este repo organiza la base inicial para que puedas:
 - 44 preguntas socráticas de conexión.
 - 40 conceptos expertos en IA, desarrollo web, datos, RAG, seguridad y agentes.
 - 6 puentes mentales con analogía simple, lectura técnica, cruce conceptual y lectura ejecutiva.
+- Apartado `Datos clave` con métricas de adopción, implementación, herramientas y fuentes web.
 - 8 labs detallados de implementación.
 - Biblioteca filtrable por concepto.
 - 10 playbooks operativos.
 - Roadmap para evolucionar a RAG y asistente agentic.
+- Documentación ampliada x5 sobre adopción IA, implementación, herramientas, briefing ejecutivo y referencias Platzi/Freddy Vega.
 - Fuentes crudas copiadas en `content/raw/2026-06-01/`.
 
 ## Ejecutar
@@ -67,9 +69,15 @@ content/
   inbox/                  Próximas fuentes a cargar
   knowledge/              Síntesis y registro curado
     AGENTIC_AI_MASTER_GUIDE.md
+    AI_ADOPTION_KEY_DATA_2026.md
+    AI_DOCUMENTATION_X5_INDEX.md
+    AI_EXECUTIVE_DATA_BRIEFING.md
+    AI_IMPLEMENTATION_MASTER_PLAYBOOK.md
     AI_WEB_DEVELOPMENT_GUIDE.md
     EXPLANATION_PLAYBOOK.md
     EXPERT_CONCEPTS_INDEX.md
+    FREDDY_VEGA_PLATZI_AI_NOTES.md
+    AI_TOOLS_LANDSCAPE_2026.md
 docs/
   PRD.md
   SPEC.md

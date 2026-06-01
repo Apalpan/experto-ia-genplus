@@ -61,6 +61,7 @@ Preguntas de IA respondidas correctamente y aplicadas a un caso real por semana.
 - El usuario puede navegar por Command, Entrenador, Biblioteca, Playbooks y Roadmap.
 - El entrenador muestra pregunta, respuesta, conexión y reto.
 - La vista Conceptos permite estudiar IA, desarrollo web y agentic AI con analogía simple, capa técnica, cruce conceptual, lectura ejecutiva, ejemplo y práctica.
+- La vista Datos clave permite estudiar adopción, implementación, herramientas, riesgos y referencias públicas recientes con lectura ejecutiva.
 - La documentación explica cómo seguir cargando conocimiento.
 
 ## Riesgos ocultos

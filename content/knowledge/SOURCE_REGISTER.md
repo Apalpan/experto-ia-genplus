@@ -41,3 +41,28 @@ Observación: la extracción textual automática no fue confiable por codificaci
 - MCP resources: https://modelcontextprotocol.io/docs/concepts/resources
 - Next.js App Router: https://nextjs.org/docs/app
 - Next.js Backend for Frontend: https://nextjs.org/docs/app/guides/backend-for-frontend
+
+## 2026-06-01 ampliación web sobre adopción IA
+
+- Stanford AI Index 2026: https://hai.stanford.edu/ai-index/2026-ai-index-report
+- Stanford AI Index 2026, Economy: https://hai.stanford.edu/ai-index/2026-ai-index-report/economy
+- Stanford AI Index 2026, Responsible AI: https://hai.stanford.edu/ai-index/2026-ai-index-report/responsible-ai
+- McKinsey State of AI 2025: https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai
+- OpenAI State of Enterprise AI 2025: https://openai.com/index/the-state-of-enterprise-ai-2025-report/
+- Microsoft Work Trend Index 2025: https://blogs.microsoft.com/blog/2025/04/23/the-2025-annual-work-trend-index-the-frontier-firm-is-born/
+- Google DORA 2025: https://blog.google/innovation-and-ai/technology/developers-tools/dora-report-2025/
+- Stack Overflow Developer Survey 2025, AI: https://survey.stackoverflow.co/2025/ai
+- Startupeable con Freddy Vega: https://startupeable.com/platzi-ia/amp/
+- Platzi Conf México 2025, Freddy Vega: https://platzi.com/cursos/conf-2025-mex/ai-arruinara-la-educacion-y-solo-hay-una-esperanza/
+- Platzi Live sobre agentes y AI Engineer: https://platzi.com/eventos/platzi-live-13/
+- Curso de Introducción a IA de Platzi: https://platzi.com/cursos/introduccion-ai/
+- Video público de Platzi, Programar 2 años después de AI: https://www.youtube.com/watch?v=QBfshqL7njQ
+
+Documentos generados con esta ampliación:
+
+- AI_ADOPTION_KEY_DATA_2026.md
+- AI_IMPLEMENTATION_MASTER_PLAYBOOK.md
+- AI_TOOLS_LANDSCAPE_2026.md
+- FREDDY_VEGA_PLATZI_AI_NOTES.md
+- AI_EXECUTIVE_DATA_BRIEFING.md
+- AI_DOCUMENTATION_X5_INDEX.md

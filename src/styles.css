@@ -129,9 +129,15 @@ a {
 .module-card span,
 .source-card span,
 .metric-card span,
+.data-metric-card span,
+.insight-row span,
 .library-card span,
 .expert-concept-card span,
 .concept-bridge-card span,
+.signal-card span,
+.tool-layer-card span,
+.platzi-card span,
+.implementation-card span,
 .lab-card span,
 .playbook-card span,
 .path-card span,
@@ -404,11 +410,16 @@ a {
 }
 
 .metric-card,
+.data-metric-card,
 .module-card,
 .source-card,
 .library-card,
 .expert-concept-card,
 .concept-bridge-card,
+.signal-card,
+.tool-layer-card,
+.platzi-card,
+.implementation-card,
 .lab-card,
 .playbook-card,
 .path-card,
@@ -437,12 +448,146 @@ a {
   line-height: 1;
 }
 
+.data-hero {
+  min-height: 430px;
+}
+
+.data-proof p {
+  margin: 0;
+  color: #d8e5f8;
+  line-height: 1.72;
+}
+
+.data-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.data-metric-card {
+  min-height: 270px;
+  padding: 20px;
+}
+
+.data-metric-card strong {
+  display: block;
+  margin: 14px 0 8px;
+  color: var(--text);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 0.95;
+  font-weight: 800;
+}
+
+.data-metric-card a,
+.platzi-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+  color: var(--gen-brand-blue-soft);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.insight-table {
+  display: grid;
+  gap: 10px;
+}
+
+.insight-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 190px) minmax(0, 1fr) 38px;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.insight-row strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.insight-row h3 {
+  margin: 0 0 5px;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.32;
+}
+
+.insight-row p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.insight-row a {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--gen-brand-blue-soft);
+  background: var(--card-strong);
+}
+
+.signal-grid,
+.tool-layer-grid,
+.platzi-grid,
+.implementation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.tool-layer-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.signal-card,
+.tool-layer-card,
+.platzi-card,
+.implementation-card {
+  padding: 20px;
+}
+
+.tool-layer-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tool-layer-top .module-icon {
+  margin-bottom: 0;
+  flex: 0 0 auto;
+}
+
+.platzi-card {
+  min-height: 330px;
+}
+
+.implementation-card {
+  min-height: 310px;
+}
+
 .metric-card p,
+.data-metric-card p,
 .module-card p,
 .source-card p,
 .library-card p,
 .expert-concept-card p,
 .concept-bridge-card p,
+.signal-card p,
+.tool-layer-card p,
+.platzi-card p,
+.implementation-card p,
 .lab-card p,
 .playbook-card p,
 .path-card p,
@@ -509,8 +654,13 @@ a {
 
 .module-card h3,
 .source-card h3,
+.data-metric-card h3,
 .library-card h3,
 .expert-concept-card h3,
+.signal-card h3,
+.tool-layer-card h3,
+.platzi-card h3,
+.implementation-card h3,
 .lab-card h3,
 .playbook-card h3,
 .path-card h3,
@@ -951,6 +1101,8 @@ select,
 
 .hero-panel,
 .metric-card,
+.data-metric-card,
+.insight-row,
 .module-card,
 .source-card,
 .trainer-panel,
@@ -958,6 +1110,10 @@ select,
 .library-card,
 .expert-concept-card,
 .concept-bridge-card,
+.signal-card,
+.tool-layer-card,
+.platzi-card,
+.implementation-card,
 .lab-card,
 .playbook-card,
 .path-card,
@@ -967,10 +1123,16 @@ select,
 }
 
 .metric-card:nth-child(2),
+.data-metric-card:nth-child(2n),
+.insight-row:nth-child(2n),
 .module-card:nth-child(2n),
 .source-card:nth-child(2n),
 .expert-concept-card:nth-child(2n),
 .concept-bridge-card:nth-child(2),
+.signal-card:nth-child(2n),
+.tool-layer-card:nth-child(2n),
+.platzi-card:nth-child(2n),
+.implementation-card:nth-child(2n),
 .lab-card:nth-child(2n),
 .playbook-card:nth-child(2n),
 .path-card:nth-child(2n) {
@@ -978,10 +1140,16 @@ select,
 }
 
 .metric-card:nth-child(3),
+.data-metric-card:nth-child(3n),
+.insight-row:nth-child(3n),
 .module-card:nth-child(3n),
 .source-card:nth-child(3n),
 .expert-concept-card:nth-child(3n),
 .concept-bridge-card:nth-child(3),
+.signal-card:nth-child(3n),
+.tool-layer-card:nth-child(3n),
+.platzi-card:nth-child(3n),
+.implementation-card:nth-child(3n),
 .lab-card:nth-child(3n),
 .playbook-card:nth-child(3n),
 .path-card:nth-child(3n) {
@@ -1055,9 +1223,14 @@ select,
   }
 
   .metrics-grid,
+  .data-metrics-grid,
   .module-grid,
   .source-grid,
   .concept-bridge-grid,
+  .signal-grid,
+  .tool-layer-grid,
+  .platzi-grid,
+  .implementation-grid,
   .path-grid,
   .timeline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1083,8 +1256,13 @@ select,
   .nav-list,
   .metrics-grid,
   .module-grid,
-  .source-grid,
-  .question-grid,
+    .source-grid,
+    .question-grid,
+    .data-metrics-grid,
+    .signal-grid,
+    .tool-layer-grid,
+    .platzi-grid,
+    .implementation-grid,
     .library-grid,
     .concept-grid,
     .concept-bridge-grid,
@@ -1097,8 +1275,13 @@ select,
   }
 
   .filter-row,
-  .lab-columns {
+  .lab-columns,
+  .insight-row {
     grid-template-columns: 1fr;
+  }
+
+  .insight-row a {
+    width: 100%;
   }
 
   .hero-panel {
