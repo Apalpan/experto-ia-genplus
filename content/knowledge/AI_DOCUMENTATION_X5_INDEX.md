@@ -175,10 +175,15 @@ La nueva fuente `Guia_Maestra_IA_Sistema_Conocimiento_2026.txt` agrega una segun
 - `AI_PROMPT_LIBRARY_AEC_AGENTIC.md`: biblioteca de prompts para diagnostico IA, agentes, contratos, RAG, codigo, PMO, seguridad y roadmap personal.
 - `AI_ULTRA_ADVANCED_AEC_AGENTIC_USE_CASES.md`: 20 casos agentic aplicados a AEC, GEN+, PMO, BIM, obra, comercial y AECODE.
 - `AI_GOVERNANCE_EVALS_OBSERVABILITY_GUIDE.md`: gobierno, evals, trazas, guardrails, aprobaciones, incidentes y calidad de produccion.
+- `AI_AEC_MASTER_RESEARCH_SYNTHESIS_2026.md`: sintesis maestra de los dos reportes GEN+ / AECODE IA AEC.
+- `AI_AEC_ROI_METRICS_AND_PRODUCT_WEDGES.md`: ROI, unidades economicas y cuñas producto para pilotos GEN+.
+- `AI_AEC_AGENTIC_STACK_AND_PATTERNS.md`: stack agentic AEC, capas, patrones y controles.
+- `AI_AEC_PROMPTS_GLOSSARY_AND_TRAINING_BANK.md`: prompts, glosario y banco de preguntas para el entrenador.
 
 ### Nuevas capacidades en la app
 
 - Vista `Madurez IA`.
+- Vista `IA AEC`.
 - Diagnostico de niveles 100-500.
 - Tarjetas de cinco pilares.
 - Taxonomia tecnica de IA.

@@ -80,6 +80,20 @@ export const sourceNotes = [
       "Madurez corporativa IA 100-500, cinco pilares, taxonomia tecnica, frameworks agentic, TTC, GRPO, prompts AEC y roadmap de automatizacion cognitiva.",
   },
   {
+    title: "Documentacion Maestra IA GEN+ / AECODE 2026",
+    type: "Markdown",
+    status: "Curado",
+    coverage:
+      "Adopcion IA, madurez Gartner, ROI AEC, QTO, site monitoring, agentes, vision, gobernanza, stack, prompts, AECODE y AI Construction Summit.",
+  },
+  {
+    title: "Deep Research GEN+ AI AEC Master Knowledge Base",
+    type: "Markdown",
+    status: "Curado",
+    coverage:
+      "Fundamentos LLM, Transformers, RAG, tool use, modelos, economia de tokens, BIM/IFC/IDS, vision edge, stack AI-native y playbooks AEC.",
+  },
+  {
     title: "AI Research Report",
     type: "PDF",
     status: "Raw incluido",
@@ -91,7 +105,7 @@ export const sourceNotes = [
 export const dashboardMetrics = [
   {
     label: "fuentes iniciales",
-    value: "5",
+    value: "7",
     signal: "base documental viva",
     tone: "blue",
   },
@@ -109,8 +123,8 @@ export const dashboardMetrics = [
   },
   {
     label: "conceptos expertos",
-    value: "60+",
-    signal: "IA, web, madurez y agentes",
+    value: "90+",
+    signal: "IA, AEC, web, madurez y agentes",
     tone: "red",
   },
 ];

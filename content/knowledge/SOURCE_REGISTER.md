@@ -86,3 +86,28 @@ Documentos generados:
 - AI_PROMPT_LIBRARY_AEC_AGENTIC.md
 - AI_ULTRA_ADVANCED_AEC_AGENTIC_USE_CASES.md
 - AI_GOVERNANCE_EVALS_OBSERVABILITY_GUIDE.md
+
+## 2026-06-01 ampliacion con reportes GEN+ / AECODE IA AEC
+
+### Documentacion_Maestra_IA_GENplus_AECODE_2026.md
+
+Estado: crudo copiado y curado.
+
+Ruta: `content/raw/2026-06-01/Documentacion_Maestra_IA_GENplus_AECODE_2026.md`
+
+Uso: adopcion IA, madurez Gartner, stack IA 2025-2026, ROI AEC, QTO, site monitoring, planificacion, gobierno, prompts, AECODE, n8n, Codex/Claude Code, AI Construction Summit y glosario.
+
+### Deep_Research_GENplus_AI_AEC_Master_Knowledge_Base.md
+
+Estado: crudo copiado y curado.
+
+Ruta: `content/raw/2026-06-01/Deep_Research_GENplus_AI_AEC_Master_Knowledge_Base.md`
+
+Uso: fundamentos LLM/Transformer, RAG, tool use, modelos, economia de tokens, agentes, seguridad, BIM/IFC/IDS, vision edge/cloud, PMO multiagente, stack recomendado, prompts y referencias.
+
+Documentos generados:
+
+- AI_AEC_MASTER_RESEARCH_SYNTHESIS_2026.md
+- AI_AEC_ROI_METRICS_AND_PRODUCT_WEDGES.md
+- AI_AEC_AGENTIC_STACK_AND_PATTERNS.md
+- AI_AEC_PROMPTS_GLOSSARY_AND_TRAINING_BANK.md

@@ -144,6 +144,12 @@ a {
 .framework-card span,
 .reasoning-card span,
 .directive-card span,
+.aec-signal-card span,
+.aec-wedge-card span,
+.agentic-pattern-card span,
+.aec-stack-card span,
+.aec-prompt-card span,
+.aec-glossary-card span,
 .lab-card span,
 .playbook-card span,
 .path-card span,
@@ -432,6 +438,12 @@ a {
 .framework-card,
 .reasoning-card,
 .directive-card,
+.aec-signal-card,
+.aec-wedge-card,
+.agentic-pattern-card,
+.aec-stack-card,
+.aec-prompt-card,
+.aec-glossary-card,
 .lab-card,
 .playbook-card,
 .path-card,
@@ -721,6 +733,99 @@ a {
   margin: 7px 0 0;
 }
 
+.aec-hero {
+  min-height: 470px;
+}
+
+.aec-proof p {
+  margin: 0;
+  color: #d8e5f8;
+  line-height: 1.72;
+}
+
+.aec-proof-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.aec-proof-strip strong {
+  min-height: 50px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.aec-signal-grid,
+.aec-wedge-grid,
+.agentic-pattern-grid,
+.aec-stack-grid,
+.aec-prompt-grid,
+.aec-glossary-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.aec-signal-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.aec-wedge-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.agentic-pattern-grid,
+.aec-stack-grid,
+.aec-prompt-grid,
+.aec-glossary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.aec-signal-card,
+.aec-wedge-card,
+.agentic-pattern-card,
+.aec-stack-card,
+.aec-prompt-card,
+.aec-glossary-card {
+  padding: 20px;
+}
+
+.aec-signal-card {
+  min-height: 360px;
+}
+
+.aec-signal-card strong {
+  display: block;
+  margin: 14px 0 8px;
+  color: var(--text);
+  font-size: clamp(2.1rem, 4vw, 3.25rem);
+  line-height: 0.95;
+  font-weight: 800;
+}
+
+.aec-wedge-card {
+  min-height: 610px;
+}
+
+.agentic-pattern-card,
+.aec-stack-card {
+  min-height: 410px;
+}
+
+.aec-prompt-card {
+  min-height: 280px;
+}
+
+.aec-glossary-card {
+  min-height: 310px;
+}
+
 .metric-card p,
 .data-metric-card p,
 .module-card p,
@@ -738,6 +843,12 @@ a {
 .framework-card p,
 .reasoning-card p,
 .directive-card p,
+.aec-signal-card p,
+.aec-wedge-card p,
+.agentic-pattern-card p,
+.aec-stack-card p,
+.aec-prompt-card p,
+.aec-glossary-card p,
 .lab-card p,
 .playbook-card p,
 .path-card p,
@@ -817,6 +928,12 @@ a {
 .framework-card h3,
 .reasoning-card h3,
 .directive-card h3,
+.aec-signal-card h3,
+.aec-wedge-card h3,
+.agentic-pattern-card h3,
+.aec-stack-card h3,
+.aec-prompt-card h3,
+.aec-glossary-card h3,
 .lab-card h3,
 .playbook-card h3,
 .path-card h3,
@@ -1276,6 +1393,12 @@ select,
 .framework-card,
 .reasoning-card,
 .directive-card,
+.aec-signal-card,
+.aec-wedge-card,
+.agentic-pattern-card,
+.aec-stack-card,
+.aec-prompt-card,
+.aec-glossary-card,
 .lab-card,
 .playbook-card,
 .path-card,
@@ -1301,6 +1424,12 @@ select,
 .framework-card:nth-child(2n),
 .reasoning-card:nth-child(2n),
 .directive-card:nth-child(2n),
+.aec-signal-card:nth-child(2n),
+.aec-wedge-card:nth-child(2n),
+.agentic-pattern-card:nth-child(2n),
+.aec-stack-card:nth-child(2n),
+.aec-prompt-card:nth-child(2n),
+.aec-glossary-card:nth-child(2n),
 .lab-card:nth-child(2n),
 .playbook-card:nth-child(2n),
 .path-card:nth-child(2n) {
@@ -1324,6 +1453,12 @@ select,
 .framework-card:nth-child(3n),
 .reasoning-card:nth-child(3n),
 .directive-card:nth-child(3n),
+.aec-signal-card:nth-child(3n),
+.aec-wedge-card:nth-child(3n),
+.agentic-pattern-card:nth-child(3n),
+.aec-stack-card:nth-child(3n),
+.aec-prompt-card:nth-child(3n),
+.aec-glossary-card:nth-child(3n),
 .lab-card:nth-child(3n),
 .playbook-card:nth-child(3n),
 .path-card:nth-child(3n) {
@@ -1411,6 +1546,12 @@ select,
   .framework-grid,
   .reasoning-grid,
   .directive-grid,
+  .aec-signal-grid,
+  .aec-wedge-grid,
+  .agentic-pattern-grid,
+  .aec-stack-grid,
+  .aec-prompt-grid,
+  .aec-glossary-grid,
   .path-grid,
   .timeline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1449,6 +1590,12 @@ select,
     .framework-grid,
     .reasoning-grid,
     .directive-grid,
+    .aec-signal-grid,
+    .aec-wedge-grid,
+    .agentic-pattern-grid,
+    .aec-stack-grid,
+    .aec-prompt-grid,
+    .aec-glossary-grid,
     .library-grid,
     .concept-grid,
     .concept-bridge-grid,
@@ -1462,6 +1609,7 @@ select,
 
   .filter-row,
   .maturity-mini-metrics,
+  .aec-proof-strip,
   .lab-columns,
   .insight-row {
     grid-template-columns: 1fr;

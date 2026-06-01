@@ -9,6 +9,7 @@ import {
   CircleGauge,
   ClipboardList,
   Cpu,
+  Eye,
   ExternalLink,
   GitBranch,
   Layers3,
@@ -52,8 +53,16 @@ import {
   reasoningConcepts,
   strategicDirectives,
 } from "./data/maturity";
+import {
+  aecGlossaryTerms,
+  aecMarketSignals,
+  aecProductWedges,
+  aecPromptTemplates,
+  aecStackLayers,
+  agenticPatterns,
+} from "./data/aecResearch";
 
-type View = "dashboard" | "trainer" | "concepts" | "data" | "maturity" | "library" | "playbooks" | "roadmap";
+type View = "dashboard" | "trainer" | "concepts" | "data" | "maturity" | "aec" | "library" | "playbooks" | "roadmap";
 
 const navItems = [
   { id: "dashboard", label: "Command", icon: LayoutDashboard },
@@ -61,6 +70,7 @@ const navItems = [
   { id: "concepts", label: "Conceptos", icon: BrainCircuit },
   { id: "data", label: "Datos clave", icon: BarChart3 },
   { id: "maturity", label: "Madurez IA", icon: CircleGauge },
+  { id: "aec", label: "IA AEC", icon: Eye },
   { id: "library", label: "Biblioteca", icon: LibraryBig },
   { id: "playbooks", label: "Playbooks", icon: ClipboardList },
   { id: "roadmap", label: "Roadmap", icon: Layers3 },
@@ -145,6 +155,7 @@ export default function App() {
         {activeView === "concepts" && <ConceptsView />}
         {activeView === "data" && <KeyDataView />}
         {activeView === "maturity" && <MaturityView />}
+        {activeView === "aec" && <AecAiView />}
         {activeView === "library" && <LibraryView />}
         {activeView === "playbooks" && <PlaybooksView />}
         {activeView === "roadmap" && <RoadmapView />}
@@ -1009,6 +1020,221 @@ function MaturityView() {
               <div className="risk-block">
                 <strong>Pregunta de dominio</strong>
                 <p>{directive.question}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function AecAiView() {
+  return (
+    <div className="view-stack">
+      <section className="hero-panel aec-hero">
+        <div className="hero-copy">
+          <span className="eyebrow">IA AEC · GEN+ / AECODE</span>
+          <h2>Convierte IA en productos AEC: QTO, obra, BIM, PMO, RAG, vision y aprendizaje verificable.</h2>
+          <p>
+            Esta capa integra los dos reportes nuevos en un mapa accionable para GEN+: señales de adopcion,
+            casos con ROI, stack AI-native, patrones agentic, prompts y glosario tecnico aplicado a construccion.
+          </p>
+          <div className="hero-actions">
+            <a className="primary-button" href="#aec-senales">
+              Ver señales <BarChart3 size={18} />
+            </a>
+            <a className="secondary-button" href="#aec-casos">
+              Casos producto <BriefcaseBusiness size={18} />
+            </a>
+          </div>
+        </div>
+        <div className="hero-proof aec-proof">
+          <div className="proof-header">
+            <Eye size={20} />
+            <span>Tesis AEC</span>
+          </div>
+          <p>
+            La ventaja no esta en comprar copilotos genericos. Esta en conectar flujos AEC con datos, contratos de
+            informacion, evidencia visual, agentes especializados y metricas de ciclo cerrado.
+          </p>
+          <div className="aec-proof-strip">
+            <strong>QTO</strong>
+            <strong>SiteVision</strong>
+            <strong>PMO Agent</strong>
+            <strong>AECODE Hub</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="aec-senales">
+        <SectionTitle
+          eyebrow="Señales de mercado"
+          title="Adopcion alta, captura de valor baja: ahi esta la oportunidad"
+          summary="Las cifras provienen de las fuentes cargadas y deben tratarse como señales de trabajo: utiles para priorizar pilotos, no como promesa comercial sin verificacion adicional."
+        />
+        <div className="aec-signal-grid">
+          {aecMarketSignals.map((signal) => (
+            <article className="aec-signal-card" key={signal.id}>
+              <span>{signal.source}</span>
+              <strong>{signal.value}</strong>
+              <h3>{signal.label}</h3>
+              <div className="concept-layer">
+                <strong>Que significa</strong>
+                <p>{signal.meaning}</p>
+              </div>
+              <div className="evidence-block">
+                <strong>Implicancia GEN+</strong>
+                <p>{signal.genplusImplication}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="aec-casos">
+        <SectionTitle
+          eyebrow="Casos producto"
+          title="Ocho cuñas de IA AEC para convertir research en pilotos vendibles"
+          summary="Cada caso conecta usuario, dolor, arquitectura, evidencia, metrica, piloto inicial y riesgo oculto."
+        />
+        <div className="aec-wedge-grid">
+          {aecProductWedges.map((wedge) => (
+            <article className="aec-wedge-card" key={wedge.id}>
+              <span>{wedge.user}</span>
+              <h3>{wedge.title}</h3>
+              <p>{wedge.pain}</p>
+              <div className="concept-layer">
+                <strong>Arquitectura IA</strong>
+                <p>{wedge.aiArchitecture}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Evidencia fuente</strong>
+                <p>{wedge.evidence}</p>
+              </div>
+              <div className="evidence-block">
+                <strong>Metrica</strong>
+                <p>{wedge.metric}</p>
+              </div>
+              <div className="template-block">
+                <strong>Primer piloto</strong>
+                <p>{wedge.firstPilot}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Riesgo</strong>
+                <p>{wedge.risk}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Patrones agentic"
+          title="Patrones para construir agentes AEC sin caer en teatro multiagente"
+          summary="El reporte refuerza una regla: empezar por un agente bien equipado y escalar a multiagente solo cuando la complejidad lo justifica."
+        />
+        <div className="agentic-pattern-grid">
+          {agenticPatterns.map((pattern) => (
+            <article className="agentic-pattern-card" key={pattern.id}>
+              <div className="module-icon">
+                <GitBranch size={20} />
+              </div>
+              <h3>{pattern.title}</h3>
+              <div className="concept-layer">
+                <strong>Simple</strong>
+                <p>{pattern.simple}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Tecnico</strong>
+                <p>{pattern.technical}</p>
+              </div>
+              <div className="template-block">
+                <strong>Cuando usar</strong>
+                <p>{pattern.useWhen}</p>
+              </div>
+              <div className="evidence-block">
+                <strong>Ejemplo AEC</strong>
+                <p>{pattern.aecExample}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Stack AI-native"
+          title="Sistema de registro determinista, sistema cognitivo probabilistico"
+          summary="Esta separacion evita que el LLM se convierta en fuente maestra de contratos, costos, IFC, aprobaciones o bitacoras."
+        />
+        <div className="aec-stack-grid">
+          {aecStackLayers.map((layer) => (
+            <article className="aec-stack-card" key={layer.id}>
+              <span>{layer.layer}</span>
+              <h3>{layer.role}</h3>
+              <div className="chip-list">
+                {layer.examples.map((example) => (
+                  <span key={example}>{example}</span>
+                ))}
+              </div>
+              <div className="template-block">
+                <strong>Regla de decision</strong>
+                <p>{layer.decisionRule}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Riesgo</strong>
+                <p>{layer.risk}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Prompts AEC"
+          title="Plantillas reutilizables para convertir IA en flujo operativo"
+          summary="Los prompts buenos fijan rol, criterio de verdad, esquema de salida, limites de accion y regla de abstencion."
+        />
+        <div className="aec-prompt-grid">
+          {aecPromptTemplates.map((prompt) => (
+            <article className="aec-prompt-card" key={prompt.id}>
+              <span>{prompt.output}</span>
+              <h3>{prompt.title}</h3>
+              <p>{prompt.useWhen}</p>
+              <div className="template-block">
+                <strong>Plantilla</strong>
+                <p>{prompt.template}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Glosario aplicado"
+          title="Terminologia avanzada explicada en clave AEC"
+          summary="El objetivo no es memorizar siglas, sino saber que problema resuelve cada concepto y donde se usa."
+        />
+        <div className="aec-glossary-grid">
+          {aecGlossaryTerms.map((item) => (
+            <article className="aec-glossary-card" key={item.term}>
+              <span>Concepto</span>
+              <h3>{item.term}</h3>
+              <div className="concept-layer">
+                <strong>Simple</strong>
+                <p>{item.simple}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Tecnico</strong>
+                <p>{item.technical}</p>
+              </div>
+              <div className="evidence-block">
+                <strong>Uso AEC</strong>
+                <p>{item.aecUse}</p>
               </div>
             </article>
           ))}

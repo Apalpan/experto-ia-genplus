@@ -33,12 +33,21 @@ src/data/maturity.ts
   reasoningConcepts
   strategicDirectives
 
+src/data/aecResearch.ts
+  aecMarketSignals
+  aecProductWedges
+  agenticPatterns
+  aecStackLayers
+  aecPromptTemplates
+  aecGlossaryTerms
+
 src/App.tsx
   DashboardView
   TrainerView
   ConceptsView
   KeyDataView
   MaturityView
+  AecAiView
   LibraryView
   PlaybooksView
   RoadmapView
@@ -132,6 +141,18 @@ Representa conceptos avanzados como TTC, GRPO, router cognitivo y deuda técnica
 - lectura ejecutiva;
 - aplicación AEC;
 - peligro común.
+
+### AecProductWedge
+
+Representa una cuña producto IA AEC. Incluye:
+
+- usuario;
+- dolor;
+- arquitectura IA;
+- evidencia fuente;
+- metrica;
+- primer piloto;
+- riesgo.
 
 ## Decisión MVP
 

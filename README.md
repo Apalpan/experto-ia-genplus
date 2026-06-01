@@ -31,12 +31,14 @@ Este repo organiza la base inicial para que puedas:
 - 6 puentes mentales con analogía simple, lectura técnica, cruce conceptual y lectura ejecutiva.
 - Apartado `Datos clave` con métricas de adopción, implementación, herramientas y fuentes web.
 - Apartado `Madurez IA` con diagnóstico 100-500, pilares, taxonomía técnica, frameworks agentic, TTC, GRPO y directivas GEN+.
+- Apartado `IA AEC` con señales de mercado, casos producto, patrones agentic, stack AI-native, prompts y glosario aplicado a construcción.
 - 8 labs detallados de implementación.
 - Biblioteca filtrable por concepto.
 - 10 playbooks operativos.
 - Roadmap para evolucionar a RAG y asistente agentic.
 - Documentación ampliada x5 sobre adopción IA, implementación, herramientas, briefing ejecutivo y referencias Platzi/Freddy Vega.
 - Documentación ampliada x2 adicional con la nueva guía pegada: madurez corporativa, arquitectura agentic, razonamiento avanzado, aprendizaje AECODE y prompts AEC.
+- Documentación ampliada con los nuevos reportes GEN+ / AECODE: investigación IA AEC, ROI, stack agentic, prompts y banco de entrenamiento.
 - Fuentes crudas copiadas en `content/raw/2026-06-01/`.
 
 ## Ejecutar
@@ -82,6 +84,10 @@ content/
     AI_PROMPT_LIBRARY_AEC_AGENTIC.md
     AI_GOVERNANCE_EVALS_OBSERVABILITY_GUIDE.md
     AI_ULTRA_ADVANCED_AEC_AGENTIC_USE_CASES.md
+    AI_AEC_MASTER_RESEARCH_SYNTHESIS_2026.md
+    AI_AEC_ROI_METRICS_AND_PRODUCT_WEDGES.md
+    AI_AEC_AGENTIC_STACK_AND_PATTERNS.md
+    AI_AEC_PROMPTS_GLOSSARY_AND_TRAINING_BANK.md
     AI_WEB_DEVELOPMENT_GUIDE.md
     EXPLANATION_PLAYBOOK.md
     EXPERT_CONCEPTS_INDEX.md

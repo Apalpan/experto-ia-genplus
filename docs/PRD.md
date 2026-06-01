@@ -29,6 +29,7 @@ Incluido:
 - Catálogo de conceptos intermedios, avanzados, expertos y ultra avanzados.
 - Labs detallados de RAG, agentes, desarrollo web IA, gobernanza, computer vision y sistemas de aprendizaje con IA.
 - Vista de madurez IA con niveles 100-500, cinco pilares, taxonomía técnica, frameworks agentic, TTC, GRPO y directivas GEN+.
+- Vista IA AEC con señales de mercado, cuñas producto, patrones agentic, stack, prompts y glosario aplicado.
 - Biblioteca con conceptos, evidencia y riesgos.
 - Playbooks operativos.
 - Fuentes crudas iniciales.
@@ -64,6 +65,7 @@ Preguntas de IA respondidas correctamente y aplicadas a un caso real por semana.
 - La vista Conceptos permite estudiar IA, desarrollo web y agentic AI con analogía simple, capa técnica, cruce conceptual, lectura ejecutiva, ejemplo y práctica.
 - La vista Datos clave permite estudiar adopción, implementación, herramientas, riesgos y referencias públicas recientes con lectura ejecutiva.
 - La vista Madurez IA permite diagnosticar adopción corporativa, elegir framework agentic y estudiar razonamiento avanzado con analogía, técnica, lectura ejecutiva y aplicación AEC.
+- La vista IA AEC permite convertir reportes GEN+ / AECODE en casos producto, pilotos medibles, stack AI-native y prompts operativos.
 - La documentación explica cómo seguir cargando conocimiento.
 
 ## Riesgos ocultos
