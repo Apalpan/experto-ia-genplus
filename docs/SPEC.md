@@ -25,10 +25,20 @@ src/data/advancedKnowledge.ts
   expertConcepts
   expertLabs
 
+src/data/maturity.ts
+  maturityLevels
+  maturityPillars
+  aiTaxonomy
+  agentFrameworks
+  reasoningConcepts
+  strategicDirectives
+
 src/App.tsx
   DashboardView
   TrainerView
   ConceptsView
+  KeyDataView
+  MaturityView
   LibraryView
   PlaybooksView
   RoadmapView
@@ -98,6 +108,30 @@ Representa un caso detallado para aprender construyendo. Incluye:
 - ejemplo detallado;
 - riesgos;
 - entregable.
+
+### MaturityLevel
+
+Representa el modelo 100-500 de adopción IA. Incluye:
+
+- nivel;
+- explicación simple;
+- capa técnica;
+- lectura ejecutiva;
+- señales de madurez;
+- infraestructura;
+- gobierno;
+- siguiente movimiento;
+- riesgo oculto.
+
+### ReasoningConcept
+
+Representa conceptos avanzados como TTC, GRPO, router cognitivo y deuda técnica. Incluye:
+
+- analogía simple;
+- lectura técnica;
+- lectura ejecutiva;
+- aplicación AEC;
+- peligro común.
 
 ## Decisión MVP
 

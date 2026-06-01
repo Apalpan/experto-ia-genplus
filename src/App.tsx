@@ -6,12 +6,16 @@ import {
   BriefcaseBusiness,
   BrainCircuit,
   CheckCircle2,
+  CircleGauge,
   ClipboardList,
+  Cpu,
   ExternalLink,
+  GitBranch,
   Layers3,
   LayoutDashboard,
   LibraryBig,
   MessageSquareText,
+  Network,
   Search,
   ShieldCheck,
   Target,
@@ -40,14 +44,23 @@ import {
   platziInsights,
   toolLayers,
 } from "./data/keyData";
+import {
+  agentFrameworks,
+  aiTaxonomy,
+  maturityLevels,
+  maturityPillars,
+  reasoningConcepts,
+  strategicDirectives,
+} from "./data/maturity";
 
-type View = "dashboard" | "trainer" | "concepts" | "data" | "library" | "playbooks" | "roadmap";
+type View = "dashboard" | "trainer" | "concepts" | "data" | "maturity" | "library" | "playbooks" | "roadmap";
 
 const navItems = [
   { id: "dashboard", label: "Command", icon: LayoutDashboard },
   { id: "trainer", label: "Entrenador", icon: MessageSquareText },
   { id: "concepts", label: "Conceptos", icon: BrainCircuit },
   { id: "data", label: "Datos clave", icon: BarChart3 },
+  { id: "maturity", label: "Madurez IA", icon: CircleGauge },
   { id: "library", label: "Biblioteca", icon: LibraryBig },
   { id: "playbooks", label: "Playbooks", icon: ClipboardList },
   { id: "roadmap", label: "Roadmap", icon: Layers3 },
@@ -131,6 +144,7 @@ export default function App() {
         {activeView === "trainer" && <TrainerView />}
         {activeView === "concepts" && <ConceptsView />}
         {activeView === "data" && <KeyDataView />}
+        {activeView === "maturity" && <MaturityView />}
         {activeView === "library" && <LibraryView />}
         {activeView === "playbooks" && <PlaybooksView />}
         {activeView === "roadmap" && <RoadmapView />}
@@ -736,6 +750,267 @@ function KeyDataView() {
               </div>
               <p>{source.note}</p>
             </a>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function MaturityView() {
+  return (
+    <div className="view-stack">
+      <section className="hero-panel maturity-hero">
+        <div className="hero-copy">
+          <span className="eyebrow">Madurez IA · arquitectura cognitiva</span>
+          <h2>De usar IA como herramienta suelta a operar sistemas agentic gobernados.</h2>
+          <p>
+            Esta capa convierte la nueva guia en un mapa practico: diagnostico 100-500, pilares de adopcion,
+            taxonomia tecnica, frameworks agentic, razonamiento avanzado y directivas para GEN+.
+          </p>
+          <div className="hero-actions">
+            <a className="primary-button" href="#niveles-madurez">
+              Ver niveles <CircleGauge size={18} />
+            </a>
+            <a className="secondary-button" href="#razonamiento-avanzado">
+              Razonamiento avanzado <Cpu size={18} />
+            </a>
+          </div>
+        </div>
+        <div className="hero-proof maturity-proof">
+          <div className="proof-header">
+            <Network size={20} />
+            <span>Idea central</span>
+          </div>
+          <p>
+            La ventaja no es tener mas prompts. La ventaja es conectar modelos, datos, herramientas, humanos,
+            evaluacion y gobierno en flujos que mejoran decisiones reales.
+          </p>
+          <div className="maturity-mini-metrics">
+            <strong>5 niveles</strong>
+            <strong>5 pilares</strong>
+            <strong>3 frameworks</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="niveles-madurez">
+        <SectionTitle
+          eyebrow="Diagnostico 100-500"
+          title="Modelo de madurez IA para empresas que quieren implementar, no solo experimentar"
+          summary="Cada nivel traduce la adopcion en senales, infraestructura, gobierno, siguiente movimiento y riesgo oculto."
+        />
+        <div className="maturity-level-grid">
+          {maturityLevels.map((level) => (
+            <article className="maturity-card" key={level.id}>
+              <div className="maturity-card-top">
+                <span>Nivel {level.level}</span>
+                <strong>{level.name}</strong>
+              </div>
+              <h3>{level.title}</h3>
+              <div className="concept-layer">
+                <strong>Simple</strong>
+                <p>{level.simple}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Tecnico</strong>
+                <p>{level.technical}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Ejecutivo</strong>
+                <p>{level.executive}</p>
+              </div>
+              <div className="chip-list">
+                {level.signals.map((signal) => (
+                  <span key={signal}>{signal}</span>
+                ))}
+              </div>
+              <div className="evidence-block">
+                <strong>Infraestructura</strong>
+                <p>{level.infrastructure}</p>
+              </div>
+              <div className="template-block">
+                <strong>Gobierno</strong>
+                <p>{level.governance}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Riesgo oculto</strong>
+                <p>{level.hiddenRisk}</p>
+              </div>
+              <div className="next-move-block">
+                <strong>Siguiente movimiento</strong>
+                <p>{level.nextMove}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Cinco pilares"
+          title="La adopcion seria de IA se evalua por sistema, no por entusiasmo"
+          summary="Los pilares permiten diagnosticar si una organizacion tiene estrategia, datos, tecnologia, talento y gobierno para escalar."
+        />
+        <div className="pillar-grid">
+          {maturityPillars.map((pillar) => (
+            <article className="pillar-card" key={pillar.id}>
+              <div className="module-icon">
+                <ShieldCheck size={20} />
+              </div>
+              <h3>{pillar.title}</h3>
+              <p>{pillar.simple}</p>
+              <div className="concept-layer">
+                <strong>Lectura avanzada</strong>
+                <p>{pillar.advanced}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Preguntas diagnosticas</strong>
+                <ul>
+                  {pillar.diagnosticQuestions.map((question) => (
+                    <li key={question}>{question}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="evidence-block">
+                <strong>Evidencia</strong>
+                <p>{pillar.evidence}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Taxonomia tecnica"
+          title="Cinco familias de IA y cuando conviene usarlas"
+          summary="Ser experto implica elegir arquitectura segun problema: predecir, generar, recuperar, ejecutar o interpretar evidencia visual."
+        />
+        <div className="taxonomy-grid">
+          {aiTaxonomy.map((item) => (
+            <article className="taxonomy-card" key={item.id}>
+              <div className="module-icon">
+                <Network size={20} />
+              </div>
+              <h3>{item.title}</h3>
+              <div className="concept-layer">
+                <strong>Mecanismo</strong>
+                <p>{item.mechanism}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Caso AEC</strong>
+                <p>{item.aecCase}</p>
+              </div>
+              <div className="template-block">
+                <strong>Regla de decision</strong>
+                <p>{item.decisionRule}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Frameworks agentic"
+          title="CrewAI, AutoGen y LangGraph no resuelven el mismo tipo de problema"
+          summary="La seleccion depende de control de estado, necesidad de ciclos, auditoria, aprobacion humana, costo y tipo de flujo."
+        />
+        <div className="framework-grid">
+          {agentFrameworks.map((framework) => (
+            <article className="framework-card" key={framework.id}>
+              <div className="framework-card-top">
+                <div className="module-icon">
+                  <GitBranch size={20} />
+                </div>
+                <span>{framework.paradigm}</span>
+              </div>
+              <h3>{framework.name}</h3>
+              <div className="concept-layer">
+                <strong>Mejor para</strong>
+                <p>{framework.bestFor}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Estado</strong>
+                <p>{framework.stateModel}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Control humano</strong>
+                <p>{framework.humanControl}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Riesgo</strong>
+                <p>{framework.risk}</p>
+              </div>
+              <div className="evidence-block">
+                <strong>Uso GEN+</strong>
+                <p>{framework.genplusUse}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="razonamiento-avanzado">
+        <SectionTitle
+          eyebrow="Razonamiento avanzado"
+          title="TTC, GRPO, router cognitivo y deuda tecnica explicados para decidir"
+          summary="Cada concepto incluye analogia sencilla, lectura tecnica, interpretacion ejecutiva, aplicacion AEC y peligro comun."
+        />
+        <div className="reasoning-grid">
+          {reasoningConcepts.map((concept) => (
+            <article className="reasoning-card" key={concept.id}>
+              <div className="module-icon">
+                <Cpu size={20} />
+              </div>
+              <h3>{concept.title}</h3>
+              <div className="concept-layer">
+                <strong>Analogia simple</strong>
+                <p>{concept.simpleAnalogy}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Tecnico</strong>
+                <p>{concept.technical}</p>
+              </div>
+              <div className="concept-layer">
+                <strong>Ejecutivo</strong>
+                <p>{concept.executive}</p>
+              </div>
+              <div className="evidence-block">
+                <strong>Aplicacion AEC</strong>
+                <p>{concept.aecApplication}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Peligro</strong>
+                <p>{concept.danger}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Directivas GEN+"
+          title="Reglas de implementacion para construir criterio experto"
+          summary="Estas directivas convierten la guia en comportamiento operativo para nuevos documentos, productos, cursos y agentes."
+        />
+        <div className="directive-grid">
+          {strategicDirectives.map((directive) => (
+            <article className="directive-card" key={directive.id}>
+              <span>Directiva</span>
+              <h3>{directive.title}</h3>
+              <p>{directive.whyItMatters}</p>
+              <div className="template-block">
+                <strong>Accion GEN+</strong>
+                <p>{directive.genplusAction}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Pregunta de dominio</strong>
+                <p>{directive.question}</p>
+              </div>
+            </article>
           ))}
         </div>
       </section>

@@ -9,6 +9,7 @@
 - [x] Agregar conceptos expertos y labs detallados.
 - [x] Agregar apartado Datos clave con adopción, implementación, herramientas y fuentes web.
 - [x] Expandir documentación x5 con briefing ejecutivo, playbook, herramientas y referencias Platzi/Freddy.
+- [x] Agregar ampliación x2 con vista Madurez IA y documentos de madurez, arquitectura agentic, razonamiento TTC/GRPO, aprendizaje AECODE y prompts AEC.
 - [x] Documentar estándar del repo.
 
 ## Próximo sprint

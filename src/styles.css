@@ -138,6 +138,12 @@ a {
 .tool-layer-card span,
 .platzi-card span,
 .implementation-card span,
+.maturity-card span,
+.pillar-card span,
+.taxonomy-card span,
+.framework-card span,
+.reasoning-card span,
+.directive-card span,
 .lab-card span,
 .playbook-card span,
 .path-card span,
@@ -420,6 +426,12 @@ a {
 .tool-layer-card,
 .platzi-card,
 .implementation-card,
+.maturity-card,
+.pillar-card,
+.taxonomy-card,
+.framework-card,
+.reasoning-card,
+.directive-card,
 .lab-card,
 .playbook-card,
 .path-card,
@@ -577,6 +589,138 @@ a {
   min-height: 310px;
 }
 
+.maturity-hero {
+  min-height: 450px;
+}
+
+.maturity-proof p {
+  margin: 0;
+  color: #d8e5f8;
+  line-height: 1.72;
+}
+
+.maturity-mini-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.maturity-mini-metrics strong {
+  min-height: 54px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.maturity-level-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.maturity-card {
+  min-height: 720px;
+  padding: 20px;
+}
+
+.maturity-card-top,
+.framework-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.maturity-card-top strong {
+  color: var(--text);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.pillar-grid,
+.taxonomy-grid,
+.framework-grid,
+.reasoning-grid,
+.directive-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.pillar-grid,
+.taxonomy-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.framework-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.reasoning-grid,
+.directive-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pillar-card,
+.taxonomy-card,
+.framework-card,
+.reasoning-card,
+.directive-card {
+  padding: 20px;
+}
+
+.pillar-card {
+  min-height: 450px;
+}
+
+.taxonomy-card {
+  min-height: 390px;
+}
+
+.framework-card,
+.reasoning-card {
+  min-height: 570px;
+}
+
+.directive-card {
+  min-height: 300px;
+}
+
+.pillar-card ul {
+  display: grid;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.framework-card-top .module-icon {
+  margin-bottom: 0;
+  flex: 0 0 auto;
+}
+
+.next-move-block {
+  margin-top: 10px;
+  padding: 14px;
+  border: 1px solid rgba(77, 132, 255, 0.34);
+  border-radius: 14px;
+  background: rgba(77, 132, 255, 0.1);
+}
+
+.next-move-block strong {
+  color: var(--text);
+}
+
+.next-move-block p {
+  margin: 7px 0 0;
+}
+
 .metric-card p,
 .data-metric-card p,
 .module-card p,
@@ -588,6 +732,12 @@ a {
 .tool-layer-card p,
 .platzi-card p,
 .implementation-card p,
+.maturity-card p,
+.pillar-card p,
+.taxonomy-card p,
+.framework-card p,
+.reasoning-card p,
+.directive-card p,
 .lab-card p,
 .playbook-card p,
 .path-card p,
@@ -661,6 +811,12 @@ a {
 .tool-layer-card h3,
 .platzi-card h3,
 .implementation-card h3,
+.maturity-card h3,
+.pillar-card h3,
+.taxonomy-card h3,
+.framework-card h3,
+.reasoning-card h3,
+.directive-card h3,
 .lab-card h3,
 .playbook-card h3,
 .path-card h3,
@@ -1114,6 +1270,12 @@ select,
 .tool-layer-card,
 .platzi-card,
 .implementation-card,
+.maturity-card,
+.pillar-card,
+.taxonomy-card,
+.framework-card,
+.reasoning-card,
+.directive-card,
 .lab-card,
 .playbook-card,
 .path-card,
@@ -1133,6 +1295,12 @@ select,
 .tool-layer-card:nth-child(2n),
 .platzi-card:nth-child(2n),
 .implementation-card:nth-child(2n),
+.maturity-card:nth-child(2n),
+.pillar-card:nth-child(2n),
+.taxonomy-card:nth-child(2n),
+.framework-card:nth-child(2n),
+.reasoning-card:nth-child(2n),
+.directive-card:nth-child(2n),
 .lab-card:nth-child(2n),
 .playbook-card:nth-child(2n),
 .path-card:nth-child(2n) {
@@ -1150,6 +1318,12 @@ select,
 .tool-layer-card:nth-child(3n),
 .platzi-card:nth-child(3n),
 .implementation-card:nth-child(3n),
+.maturity-card:nth-child(3n),
+.pillar-card:nth-child(3n),
+.taxonomy-card:nth-child(3n),
+.framework-card:nth-child(3n),
+.reasoning-card:nth-child(3n),
+.directive-card:nth-child(3n),
 .lab-card:nth-child(3n),
 .playbook-card:nth-child(3n),
 .path-card:nth-child(3n) {
@@ -1231,6 +1405,12 @@ select,
   .tool-layer-grid,
   .platzi-grid,
   .implementation-grid,
+  .maturity-level-grid,
+  .pillar-grid,
+  .taxonomy-grid,
+  .framework-grid,
+  .reasoning-grid,
+  .directive-grid,
   .path-grid,
   .timeline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1263,6 +1443,12 @@ select,
     .tool-layer-grid,
     .platzi-grid,
     .implementation-grid,
+    .maturity-level-grid,
+    .pillar-grid,
+    .taxonomy-grid,
+    .framework-grid,
+    .reasoning-grid,
+    .directive-grid,
     .library-grid,
     .concept-grid,
     .concept-bridge-grid,
@@ -1275,6 +1461,7 @@ select,
   }
 
   .filter-row,
+  .maturity-mini-metrics,
   .lab-columns,
   .insight-row {
     grid-template-columns: 1fr;

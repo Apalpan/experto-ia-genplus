@@ -73,6 +73,13 @@ export const sourceNotes = [
       "Versión extendida de guía maestra: fundamentos, modelos, RAG, MCP, automatización, buenas prácticas, riesgos y glosario.",
   },
   {
+    title: "Guia Maestra IA Sistema Conocimiento 2026",
+    type: "Texto",
+    status: "Curado",
+    coverage:
+      "Madurez corporativa IA 100-500, cinco pilares, taxonomia tecnica, frameworks agentic, TTC, GRPO, prompts AEC y roadmap de automatizacion cognitiva.",
+  },
+  {
     title: "AI Research Report",
     type: "PDF",
     status: "Raw incluido",
@@ -84,7 +91,7 @@ export const sourceNotes = [
 export const dashboardMetrics = [
   {
     label: "fuentes iniciales",
-    value: "4",
+    value: "5",
     signal: "base documental viva",
     tone: "blue",
   },
@@ -102,8 +109,8 @@ export const dashboardMetrics = [
   },
   {
     label: "conceptos expertos",
-    value: "40",
-    signal: "IA, web, datos y agentes",
+    value: "60+",
+    signal: "IA, web, madurez y agentes",
     tone: "red",
   },
 ];

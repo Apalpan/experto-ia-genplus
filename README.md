@@ -30,11 +30,13 @@ Este repo organiza la base inicial para que puedas:
 - 40 conceptos expertos en IA, desarrollo web, datos, RAG, seguridad y agentes.
 - 6 puentes mentales con analogía simple, lectura técnica, cruce conceptual y lectura ejecutiva.
 - Apartado `Datos clave` con métricas de adopción, implementación, herramientas y fuentes web.
+- Apartado `Madurez IA` con diagnóstico 100-500, pilares, taxonomía técnica, frameworks agentic, TTC, GRPO y directivas GEN+.
 - 8 labs detallados de implementación.
 - Biblioteca filtrable por concepto.
 - 10 playbooks operativos.
 - Roadmap para evolucionar a RAG y asistente agentic.
 - Documentación ampliada x5 sobre adopción IA, implementación, herramientas, briefing ejecutivo y referencias Platzi/Freddy Vega.
+- Documentación ampliada x2 adicional con la nueva guía pegada: madurez corporativa, arquitectura agentic, razonamiento avanzado, aprendizaje AECODE y prompts AEC.
 - Fuentes crudas copiadas en `content/raw/2026-06-01/`.
 
 ## Ejecutar
@@ -73,6 +75,13 @@ content/
     AI_DOCUMENTATION_X5_INDEX.md
     AI_EXECUTIVE_DATA_BRIEFING.md
     AI_IMPLEMENTATION_MASTER_PLAYBOOK.md
+    AI_MATURITY_AND_COGNITIVE_AUTOMATION_GUIDE.md
+    AI_AGENTIC_ARCHITECTURE_FRAMEWORKS_2026.md
+    AI_REASONING_TTC_GRPO_MASTERCLASS.md
+    AI_AECODE_ADAPTIVE_LEARNING_SYSTEM.md
+    AI_PROMPT_LIBRARY_AEC_AGENTIC.md
+    AI_GOVERNANCE_EVALS_OBSERVABILITY_GUIDE.md
+    AI_ULTRA_ADVANCED_AEC_AGENTIC_USE_CASES.md
     AI_WEB_DEVELOPMENT_GUIDE.md
     EXPLANATION_PLAYBOOK.md
     EXPERT_CONCEPTS_INDEX.md

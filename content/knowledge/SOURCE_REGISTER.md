@@ -66,3 +66,23 @@ Documentos generados con esta ampliación:
 - FREDDY_VEGA_PLATZI_AI_NOTES.md
 - AI_EXECUTIVE_DATA_BRIEFING.md
 - AI_DOCUMENTATION_X5_INDEX.md
+
+## 2026-06-01 ampliacion con nueva guia pegada
+
+### Guia_Maestra_IA_Sistema_Conocimiento_2026.txt
+
+Estado: crudo copiado y curado.
+
+Ruta: `content/raw/2026-06-01/Guia_Maestra_IA_Sistema_Conocimiento_2026.txt`
+
+Uso: modelo de madurez IA 100-500, cinco pilares de adopcion, taxonomia tecnica, arquitectura agentic, comparativa CrewAI/AutoGen/LangGraph, Test-Time Compute, GRPO, roadmap de automatizacion cognitiva, prompts de auditoria y contratos, y sistema de aprendizaje IA para AECODE.
+
+Documentos generados:
+
+- AI_MATURITY_AND_COGNITIVE_AUTOMATION_GUIDE.md
+- AI_AGENTIC_ARCHITECTURE_FRAMEWORKS_2026.md
+- AI_REASONING_TTC_GRPO_MASTERCLASS.md
+- AI_AECODE_ADAPTIVE_LEARNING_SYSTEM.md
+- AI_PROMPT_LIBRARY_AEC_AGENTIC.md
+- AI_ULTRA_ADVANCED_AEC_AGENTIC_USE_CASES.md
+- AI_GOVERNANCE_EVALS_OBSERVABILITY_GUIDE.md
