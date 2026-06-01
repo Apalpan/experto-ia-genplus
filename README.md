@@ -4,6 +4,8 @@ Entrenador experto de inteligencia artificial para Alejandro Palpan y GEN+. El o
 
 by Alejandro Palpan
 
+Deploy: https://apalpan.github.io/experto-ia-genplus/
+
 ## Problema que resuelve
 
 La información sobre IA está fragmentada entre documentos, PDFs, notas, cursos, herramientas y tendencias. Eso genera aprendizaje superficial: saber nombres de herramientas sin entender arquitectura, datos, riesgos, producto y aplicación real.
