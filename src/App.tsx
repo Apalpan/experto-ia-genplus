@@ -1,0 +1,705 @@
+import { useEffect, useMemo, useState } from "react";
+import {
+  ArrowRight,
+  BookOpen,
+  BrainCircuit,
+  CheckCircle2,
+  ClipboardList,
+  ExternalLink,
+  Layers3,
+  LayoutDashboard,
+  LibraryBig,
+  MessageSquareText,
+  Search,
+  Target,
+} from "lucide-react";
+import { MetricCard } from "./components/MetricCard";
+import { SectionTitle } from "./components/SectionTitle";
+import { ThemeToggle } from "./components/ThemeToggle";
+import {
+  dashboardMetrics,
+  externalReferences,
+  knowledgeModules,
+  learningPaths,
+  playbooks,
+  sourceNotes,
+  trainerQuestions,
+  type MasteryLevel,
+} from "./data/knowledge";
+import { findModuleTitle, getQuestionSet, normalizeSearch } from "./lib/trainer";
+import { conceptBridges, expertConcepts, expertLabs } from "./data/advancedKnowledge";
+
+type View = "dashboard" | "trainer" | "concepts" | "library" | "playbooks" | "roadmap";
+
+const navItems = [
+  { id: "dashboard", label: "Command", icon: LayoutDashboard },
+  { id: "trainer", label: "Entrenador", icon: MessageSquareText },
+  { id: "concepts", label: "Conceptos", icon: BrainCircuit },
+  { id: "library", label: "Biblioteca", icon: LibraryBig },
+  { id: "playbooks", label: "Playbooks", icon: ClipboardList },
+  { id: "roadmap", label: "Roadmap", icon: Layers3 },
+] satisfies Array<{ id: View; label: string; icon: typeof LayoutDashboard }>;
+
+const levels: MasteryLevel[] = ["base", "intermedio", "avanzado", "experto", "ultra"];
+
+export default function App() {
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [activeView, setActiveView] = useState<View>("dashboard");
+
+  const activateView = (view: View) => {
+    setActiveView(view);
+    window.scrollTo({ top: 0, left: 0 });
+  };
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, [activeView]);
+
+  return (
+    <div className="app-shell">
+      <aside className="sidebar">
+        <div className="brand-block">
+          <div className="brand-mark">G+</div>
+          <div>
+            <span>GEN+ AI</span>
+            <strong>Expert Trainer</strong>
+            <em>by Alejandro Palpan</em>
+          </div>
+        </div>
+
+        <nav className="nav-list" aria-label="Secciones">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                className={activeView === item.id ? "nav-item active" : "nav-item"}
+                type="button"
+                key={item.id}
+                onClick={() => activateView(item.id)}
+              >
+                <Icon size={18} />
+                {item.label}
+              </button>
+            );
+          })}
+        </nav>
+
+        <div className="sidebar-footer">
+          <span>North Star</span>
+          <strong>Comprensión aplicable de IA</strong>
+          <p>Preguntas profundas + evidencia + casos GEN+.</p>
+        </div>
+      </aside>
+
+      <main className="workspace">
+        <header className="topbar">
+          <div>
+            <span className="eyebrow">Base viva · 2026-06-01</span>
+            <h1>Entrenador experto de inteligencia artificial</h1>
+            <span className="signature-pill">by Alejandro Palpan</span>
+          </div>
+          <div className="topbar-actions">
+            <button className="ghost-button" type="button" onClick={() => activateView("trainer")}>
+              <MessageSquareText size={17} />
+              Practicar
+            </button>
+            <ThemeToggle
+              theme={theme}
+              onToggle={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
+            />
+          </div>
+        </header>
+
+        {activeView === "dashboard" && <DashboardView onOpenTrainer={() => activateView("trainer")} />}
+        {activeView === "trainer" && <TrainerView />}
+        {activeView === "concepts" && <ConceptsView />}
+        {activeView === "library" && <LibraryView />}
+        {activeView === "playbooks" && <PlaybooksView />}
+        {activeView === "roadmap" && <RoadmapView />}
+      </main>
+    </div>
+  );
+}
+
+function DashboardView({ onOpenTrainer }: { onOpenTrainer: () => void }) {
+  return (
+    <div className="view-stack">
+      <section className="hero-panel">
+        <div className="hero-copy">
+          <span className="eyebrow">GEN+ AI · by Alejandro Palpan</span>
+          <h2>Domina IA como sistema: modelos, datos, agentes, automatización, producto y gobierno.</h2>
+          <p>
+            Este repo convierte tus documentos iniciales en una experiencia de entrenamiento: conceptos explicados
+            con analogías, lectura técnica, criterio ejecutivo, preguntas socráticas, playbooks aplicables y una base
+            lista para seguir creciendo.
+          </p>
+          <div className="hero-actions">
+            <button className="primary-button" type="button" onClick={onOpenTrainer}>
+              Empezar sesión <ArrowRight size={18} />
+            </button>
+            <a className="secondary-button" href="#fuentes">
+              Ver fuentes <BookOpen size={18} />
+            </a>
+          </div>
+        </div>
+        <div className="hero-proof">
+          <div className="proof-header">
+            <Target size={20} />
+            <span>Loop de aprendizaje</span>
+          </div>
+          <ol>
+            <li>Entiende el concepto en lenguaje simple.</li>
+            <li>Conecta la analogía con arquitectura avanzada.</li>
+            <li>Responde una pregunta crítica y ejecutiva.</li>
+            <li>Aplica el concepto a GEN+ o AEC.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section className="metrics-grid">
+        {dashboardMetrics.map((metric) => (
+          <MetricCard key={metric.label} {...metric} />
+        ))}
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Mapa de dominio"
+          title="14 módulos para pasar de usuario avanzado a arquitecto de IA"
+          summary="Cada módulo mezcla fundamento, aplicación GEN+, riesgo y evidencia de dominio."
+        />
+        <div className="module-grid">
+          {knowledgeModules.map((module) => {
+            const Icon = module.icon;
+            return (
+              <article className="module-card" key={module.id}>
+                <div className="module-icon">
+                  <Icon size={20} />
+                </div>
+                <span>{module.level}</span>
+                <h3>{module.shortTitle}</h3>
+                <p>{module.promise}</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section id="fuentes">
+        <SectionTitle
+          eyebrow="Fuentes"
+          title="Base documental inicial"
+          summary="Las fuentes crudas quedaron dentro del repo y la app usa una síntesis curada para entrenamiento."
+        />
+        <div className="source-grid">
+          {sourceNotes.map((source) => (
+            <article className="source-card" key={source.title}>
+              <div>
+                <span>{source.type}</span>
+                <strong>{source.status}</strong>
+              </div>
+              <h3>{source.title}</h3>
+              <p>{source.coverage}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function TrainerView() {
+  const [moduleId, setModuleId] = useState(knowledgeModules[0].id);
+  const [level, setLevel] = useState<MasteryLevel>("base");
+  const [index, setIndex] = useState(0);
+  const [revealed, setRevealed] = useState(false);
+
+  const selectedModule = knowledgeModules.find((module) => module.id === moduleId) ?? knowledgeModules[0];
+  const questionSet = useMemo(() => getQuestionSet(moduleId, level), [moduleId, level]);
+  const question = questionSet[index % questionSet.length];
+
+  useEffect(() => {
+    setIndex(0);
+    setRevealed(false);
+  }, [moduleId, level]);
+
+  const Icon = selectedModule.icon;
+
+  return (
+    <div className="view-stack">
+      <section className="trainer-layout">
+        <div className="trainer-panel">
+          <SectionTitle
+            eyebrow="Sesión socrática"
+            title="Preguntas para entender de verdad"
+            summary="El objetivo no es memorizar conceptos; es poder decidir arquitectura, producto y riesgo."
+          />
+
+          <div className="control-group">
+            <label htmlFor="module">Módulo</label>
+            <select id="module" value={moduleId} onChange={(event) => setModuleId(event.target.value)}>
+              {knowledgeModules.map((module) => (
+                <option key={module.id} value={module.id}>
+                  {module.shortTitle} · {module.title}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="level-tabs" role="group" aria-label="Nivel">
+            {levels.map((item) => (
+              <button
+                key={item}
+                type="button"
+                className={item === level ? "level-tab active" : "level-tab"}
+                onClick={() => setLevel(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+
+          <article className="concept-panel">
+            <div className="concept-heading">
+              <div className="module-icon">
+                <Icon size={20} />
+              </div>
+              <div>
+                <span>{selectedModule.level}</span>
+                <h3>{selectedModule.title}</h3>
+              </div>
+            </div>
+            <p>{selectedModule.simple}</p>
+            <p className="advanced-note">{selectedModule.advanced}</p>
+          </article>
+        </div>
+
+        <div className="question-panel">
+          <div className="question-meta">
+            <span>{findModuleTitle(question.moduleId)}</span>
+            <strong>
+              {index + 1} / {questionSet.length}
+            </strong>
+          </div>
+          <h2>{question.question}</h2>
+          <p>{question.whyItMatters}</p>
+
+          <div className="question-actions">
+            <button className="primary-button" type="button" onClick={() => setRevealed((value) => !value)}>
+              {revealed ? "Ocultar respuesta" : "Revelar respuesta"}
+            </button>
+            <button
+              className="ghost-button"
+              type="button"
+              onClick={() => {
+                setIndex((value) => value + 1);
+                setRevealed(false);
+              }}
+            >
+              Siguiente <ArrowRight size={17} />
+            </button>
+          </div>
+
+          {revealed && (
+            <div className="answer-stack">
+              <div>
+                <span>Respuesta núcleo</span>
+                <p>{question.answer}</p>
+              </div>
+              <div>
+                <span>Conexión</span>
+                <p>{question.connection}</p>
+              </div>
+              <div>
+                <span>Reto aplicado</span>
+                <p>{question.challenge}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Banco completo"
+          title="Preguntas disponibles"
+          summary="Cada pregunta está pensada para unir concepto, arquitectura, negocio y aplicación real."
+        />
+        <div className="question-grid">
+          {trainerQuestions.slice(0, 12).map((item) => (
+            <article className="mini-question" key={item.id}>
+              <span>{findModuleTitle(item.moduleId)} · {item.level}</span>
+              <p>{item.question}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ConceptsView() {
+  const [query, setQuery] = useState("");
+  const [levelFilter, setLevelFilter] = useState<MasteryLevel | "todos">("todos");
+  const normalized = normalizeSearch(query);
+
+  const filteredConcepts = useMemo(() => {
+    return expertConcepts.filter((concept) => {
+      const levelMatches = levelFilter === "todos" || concept.level === levelFilter;
+      if (!levelMatches) return false;
+      if (!normalized) return true;
+
+      const haystack = normalizeSearch(
+        [
+          concept.domain,
+          concept.title,
+          concept.simple,
+          concept.deep,
+          concept.whyItMatters,
+          concept.example,
+          concept.practice,
+        ].join(" "),
+      );
+      return haystack.includes(normalized);
+    });
+  }, [levelFilter, normalized]);
+
+  return (
+    <div className="view-stack">
+      <section className="library-header">
+        <SectionTitle
+          eyebrow="Conceptos expertos"
+          title="IA, desarrollo web, datos, agentes y producción"
+          summary="Explicación sencilla + analogía + capa técnica + lectura ejecutiva + ejemplo detallado + práctica. Enfocado en pasar de usuario avanzado a arquitecto IA."
+        />
+        <label className="search-box">
+          <Search size={18} />
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Buscar concepto, dominio o ejemplo..."
+            type="search"
+          />
+        </label>
+      </section>
+
+      <section className="concept-bridge-grid" aria-label="Puentes mentales de IA">
+        {conceptBridges.map((bridge) => (
+          <article className="concept-bridge-card" key={bridge.id}>
+            <div className="bridge-axis">
+              <span>{bridge.domain}</span>
+              <strong>{bridge.level}</strong>
+            </div>
+            <h3>{bridge.title}</h3>
+            <div className="concept-layer">
+              <strong>Analogía simple</strong>
+              <p>{bridge.analogy}</p>
+            </div>
+            <div className="concept-layer">
+              <strong>Lectura técnica</strong>
+              <p>{bridge.technical}</p>
+            </div>
+            <div className="concept-layer">
+              <strong>Cruce de conceptos</strong>
+              <ul>
+                {bridge.crossConcepts.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="risk-block">
+              <strong>Lectura ejecutiva</strong>
+              <p>{bridge.executive}</p>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <div className="filter-row" role="group" aria-label="Filtrar nivel">
+        <button
+          type="button"
+          className={levelFilter === "todos" ? "level-tab active" : "level-tab"}
+          onClick={() => setLevelFilter("todos")}
+        >
+          Todos
+        </button>
+        {levels.map((item) => (
+          <button
+            key={item}
+            type="button"
+            className={levelFilter === item ? "level-tab active" : "level-tab"}
+            onClick={() => setLevelFilter(item)}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+
+      <section className="concept-grid">
+        {filteredConcepts.map((concept) => (
+          <article className="expert-concept-card" key={concept.id}>
+            <div className="concept-card-top">
+              <span>{concept.domain}</span>
+              <strong>{concept.level}</strong>
+            </div>
+            <h3>{concept.title}</h3>
+            <div className="concept-layer">
+              <strong>Simple</strong>
+              <p>{concept.simple}</p>
+            </div>
+            <div className="concept-layer">
+              <strong>Técnico</strong>
+              <p>{concept.deep}</p>
+            </div>
+            <div className="concept-layer">
+              <strong>Ejecutivo</strong>
+              <p>{concept.whyItMatters}</p>
+            </div>
+            <div className="concept-layer">
+              <strong>Ejemplo</strong>
+              <p>{concept.example}</p>
+            </div>
+            <div className="risk-block">
+              <strong>Práctica</strong>
+              <p>{concept.practice}</p>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Labs detallados"
+          title="Casos de implementación para dominar IA construyendo"
+          summary="Cada lab define escenario, arquitectura, flujo, datos, stack, riesgos y entregable."
+        />
+        <div className="lab-grid">
+          {expertLabs.map((lab) => (
+            <article className="lab-card" key={lab.id}>
+              <span>{lab.level}</span>
+              <h3>{lab.title}</h3>
+              <p>{lab.scenario}</p>
+              <div className="concept-layer">
+                <strong>Arquitectura</strong>
+                <p>{lab.architecture}</p>
+              </div>
+              <div className="lab-columns">
+                <div>
+                  <strong>Flujo</strong>
+                  <ol>
+                    {lab.flow.map((step) => (
+                      <li key={step}>{step}</li>
+                    ))}
+                  </ol>
+                </div>
+                <div>
+                  <strong>Stack</strong>
+                  <div className="chip-list">
+                    {lab.stack.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="evidence-block">
+                <strong>Ejemplo detallado</strong>
+                <p>{lab.detailedExample}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Riesgos</strong>
+                <p>{lab.risks.join(" · ")}</p>
+              </div>
+              <div className="template-block">
+                <strong>Entregable</strong>
+                <p>{lab.deliverable}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function LibraryView() {
+  const [query, setQuery] = useState("");
+  const normalized = normalizeSearch(query);
+
+  const filteredModules = useMemo(() => {
+    if (!normalized) return knowledgeModules;
+
+    return knowledgeModules.filter((module) => {
+      const haystack = normalizeSearch(
+        [module.title, module.promise, module.simple, module.advanced, module.concepts.join(" ")].join(" "),
+      );
+      return haystack.includes(normalized);
+    });
+  }, [normalized]);
+
+  return (
+    <div className="view-stack">
+      <section className="library-header">
+        <SectionTitle
+          eyebrow="Biblioteca"
+          title="Conceptos, ejemplos, evidencia y riesgos"
+          summary="Busca por RAG, agentes, BIM, ROI, MCP, visión, prompting, gobernanza o vibe coding."
+        />
+        <label className="search-box">
+          <Search size={18} />
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Buscar en la base..."
+            type="search"
+          />
+        </label>
+      </section>
+
+      <div className="library-grid">
+        {filteredModules.map((module) => {
+          const Icon = module.icon;
+          return (
+            <article className="library-card" key={module.id}>
+              <div className="library-top">
+                <div className="module-icon">
+                  <Icon size={20} />
+                </div>
+                <span>{module.level}</span>
+              </div>
+              <h3>{module.title}</h3>
+              <p>{module.promise}</p>
+              <div className="chip-list">
+                {module.concepts.slice(0, 6).map((concept) => (
+                  <span key={concept}>{concept}</span>
+                ))}
+              </div>
+              <div className="evidence-block">
+                <strong>Evidencia</strong>
+                <p>{module.evidence}</p>
+              </div>
+              <div className="risk-block">
+                <strong>Riesgo</strong>
+                <p>{module.risk}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function PlaybooksView() {
+  return (
+    <div className="view-stack">
+      <SectionTitle
+        eyebrow="Playbooks"
+        title="Guías operativas para aplicar IA"
+        summary="Cada playbook produce una salida utilizable: diagnóstico, agente, RAG, ROI, visión, MVP o gobernanza."
+      />
+
+      <div className="playbook-grid">
+        {playbooks.map((playbook) => (
+          <article className="playbook-card" key={playbook.id}>
+            <span>{playbook.output}</span>
+            <h3>{playbook.title}</h3>
+            <p>{playbook.useWhen}</p>
+            <ul>
+              {playbook.steps.map((step) => (
+                <li key={step}>
+                  <CheckCircle2 size={16} />
+                  {step}
+                </li>
+              ))}
+            </ul>
+            <div className="template-block">
+              <strong>Prompt base</strong>
+              <p>{playbook.template}</p>
+            </div>
+            <div className="risk-block">
+              <strong>Riesgo oculto</strong>
+              <p>{playbook.hiddenRisk}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function RoadmapView() {
+  return (
+    <div className="view-stack">
+      <SectionTitle
+        eyebrow="Evolución"
+        title="De entrenador estático a asistente experto conectado"
+        summary="El repo ya queda preparado para cargar más documentos y avanzar hacia RAG, evaluación y agentes."
+      />
+
+      <section className="path-grid">
+        {learningPaths.map((path) => (
+          <article className="path-card" key={path.title}>
+            <span>{path.audience}</span>
+            <h3>{path.title}</h3>
+            <p>{path.activation}</p>
+            <div className="path-modules">
+              {path.modules.map((moduleId) => (
+                <span key={moduleId}>{findModuleTitle(moduleId)}</span>
+              ))}
+            </div>
+            <div className="evidence-block">
+              <strong>Evidencia</strong>
+              <p>{path.evidence}</p>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="timeline">
+        <article>
+          <span>Fase 1</span>
+          <h3>Base y entrenamiento</h3>
+          <p>App estática, módulos, preguntas, playbooks, fuentes crudas y documentación del repo.</p>
+        </article>
+        <article>
+          <span>Fase 2</span>
+          <h3>Ingesta mensual</h3>
+          <p>Carpeta inbox, registro de fuentes, síntesis curada, preguntas nuevas y versionado del conocimiento.</p>
+        </article>
+        <article>
+          <span>Fase 3</span>
+          <h3>RAG local/API</h3>
+          <p>Embeddings, búsqueda semántica, citas, permisos, evaluaciones y respuestas con fuente.</p>
+        </article>
+        <article>
+          <span>Fase 4</span>
+          <h3>Asistente agentic</h3>
+          <p>Herramientas, memoria, planificador, tutor, evaluador, logs, human-in-the-loop y métricas.</p>
+        </article>
+      </section>
+
+      <section>
+        <SectionTitle
+          eyebrow="Referencias externas"
+          title="Fuentes actuales usadas para complementar la base"
+          summary="Se priorizaron fuentes oficiales o documentación primaria para temas cambiantes."
+        />
+        <div className="reference-grid">
+          {externalReferences.map((reference) => (
+            <a className="reference-card" href={reference.url} key={reference.url} target="_blank" rel="noreferrer">
+              <div>
+                <strong>{reference.label}</strong>
+                <ExternalLink size={16} />
+              </div>
+              <p>{reference.note}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
