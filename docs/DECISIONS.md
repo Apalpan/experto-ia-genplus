@@ -35,3 +35,9 @@ Razón: la extracción automática devolvió texto corrupto por codificación de
 Decisión: convertir el inicio en un panel operativo titulado `AI Expert`.
 
 Razón: Alejandro necesita una herramienta para aprender, diagnosticar, implementar y escalar IA, no una landing ni un índice documental. El dashboard ahora prioriza score, filtros por perfil/nivel, framework 01-05 y CTAs de accion.
+
+## 2026-06-07 — Adopcion visual desde Stitch
+
+Decision: usar el MCP de Stitch como fuente de direccion visual para el deploy web, tomando el proyecto `GenPlus Modern Design Evolution` y el design system `GEN+ High-Tech Premium`.
+
+Razon: Stitch define los tokens y criterios de evolucion GEN+ hacia una interfaz high-tech premium: dark minimalism, glassmorphism, capas tonales, bordes luminosos, `#2165FF`, `#040F20`, `#06142A`, Plus Jakarta Sans y headings con fallback Ruberoid. La implementacion real se mantiene en React/Vite/GitHub Pages para conservar control del producto, versionado y despliegue.
